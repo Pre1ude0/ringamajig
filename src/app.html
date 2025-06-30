@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="stylesheet" href="%sveltekit.assets%/index.css" />
+        <link rel="stylesheet" href="%sveltekit.assets%/prettify.css" />
+        %sveltekit.head%
+
+        <title>Ring-amajig</title>
+        <meta property="og:title" content="Ring-amajig" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ring.pre1ude.dev" />
+        <meta
+            property="og:image"
+            content="https://ring.pre1ude.dev/favicon.png"
+        />
+        <meta
+            property="og:description"
+            content="Yet another webring on the www"
+        />
+        <meta property="og:site_name" content="ring.pre1ude.dev" />
+        <meta name="theme-color" content="#ffffff" />
+    </head>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <body data-sveltekit-preload-data="hover">
+        <div
+            display="contents"
+            style="min-height: 100vh; display: flex; flex-direction: column"
+        >
+            %sveltekit.body%
+        </div>
+    </body>
+</html>

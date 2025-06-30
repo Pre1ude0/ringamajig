@@ -1,0 +1,47 @@
+import { json } from "@sveltejs/kit";
+import * as cheerio from "cheerio";
+
+export const POST = async ({ request }) => {
+    try {
+        const { url } = await request.json();
+
+        if (!url || typeof url !== "string") {
+            return json({ error: "Invalid or missing URL." }, { status: 400 });
+        }
+
+        const res = await fetch(url);
+        if (!res.ok) {
+            return json(
+                { error: `Failed to fetch page: ${res.statusText}` },
+                { status: res.status },
+            );
+        }
+
+        const html = await res.text();
+        const $ = cheerio.load(html);
+
+        const og: Record<string, string> = {};
+        $('meta[property^="og:"]').each((_, el) => {
+            const property = $(el).attr("property");
+            const content = $(el).attr("content");
+            if (property && content) {
+                og[property] = content;
+            }
+        });
+
+        if (!og["og:site_name"]) {
+            og["og:site_name"] = url.replace(/^https?:\/\//, "");
+        }
+
+        const themeColor =
+            $('meta[name="theme-color"]').attr("content") || null;
+
+        return json({
+            og,
+            themeColor,
+        });
+    } catch (err) {
+        console.error(err);
+        return json({ error: "Server error occurred." }, { status: 500 });
+    }
+};
