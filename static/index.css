@@ -58,11 +58,15 @@ code {
 }
 
 pre {
+
+    margin: 0 1em 2em 1em;
+    padding: 1em !important;
+
     position: relative;
     font-family: "Fira Code", monospace;
     font-size: 0.9em;
     background-color: var(--code);
-    padding: 10px;
+
     border-radius: var(--border-radius);
     overflow-x: auto;
     white-space: pre-line;
