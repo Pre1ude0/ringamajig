@@ -29,7 +29,7 @@
             goto("/");
         }
 
-        currentPageUrl = `${page.url.protocol}//${page.url.hostname}`;
+        currentPageUrl = document.referrer || document.location.href;
         fetch("/api/get-neighbours", {
             method: "POST",
             headers: {
