@@ -1,6 +1,5 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { page } from "$app/state";
     import { goto } from "$app/navigation";
     import Logo from "$lib/Logo.svelte";
 
@@ -9,6 +8,7 @@
 
     let currentPageUrl: string = $state("");
     let pageDisplay: string = $state("none");
+    let customValues: any = $state({});
 
     $inspect(currentPageUrl);
 
@@ -30,7 +30,9 @@
         }
 
         currentPageUrl =
-            new URL(window.location.href).searchParams.get("page") || "";
+            new URL(window.location.href).searchParams.get("url") || "";
+        customValues = new URL(window.location.href).searchParams || {};
+
         fetch("/api/get-neighbours", {
             method: "POST",
             headers: {
@@ -58,7 +60,9 @@
     });
 </script>
 
-<div style="--display:{pageDisplay}">
+<div
+    style="--display:{pageDisplay}; --cust-background: {customValues.bgcolor}; --cust-fg: {customValues.fgcolor};"
+>
     <a
         href={previous}
         target="_top"
@@ -89,15 +93,6 @@
         }}>▶</a
     >
 </div>
-{#if pageDisplay === "none"}
-    <div
-        style="display: flex; justify-content: center; align-items: center; height: 100vh;"
-    >
-        <p style="color: var(--fg); font-size: 24px;">
-            {currentPageUrl}
-        </p>
-    </div>
-{/if}
 
 <style>
     :global(body) {
@@ -119,12 +114,12 @@
             content: none;
         }
 
-        background-color: transparent;
+        background-color: var(--cust-background, transparent);
         border: none;
         font-size: 40pt;
         font-weight: bold;
         cursor: pointer;
-        color: var(--fg);
+        color: var(--cust-fg, var(--fg));
         height: 50px;
         line-height: 55px;
         transition:
