@@ -26,9 +26,9 @@
     }
 
     onMount(() => {
-        // if (window.self === window.top) {
-        //     goto("/");
-        // }
+        if (window.self === window.top) {
+            goto("/");
+        }
 
         function isColor(strColor: string) {
             var s = new Option().style;
@@ -128,7 +128,7 @@
 
 <style>
     :global(body) {
-        background-color: var(--cust-bg, var(--bg));
+        background-color: var(--cust-bg, var(--bg)) !important;
         height: 100%;
         width: 100%;
     }
@@ -139,7 +139,7 @@
         height: 100%;
         width: 100%;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         gap: 10px;
         padding: 10px;
 
@@ -158,7 +158,7 @@
 
         color: var(--cust-fg, var(--fg));
 
-        height: 50px;
+        height: fit-content;
         line-height: 55px;
         transition:
             color 0.3s ease,

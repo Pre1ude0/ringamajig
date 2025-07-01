@@ -183,11 +183,12 @@
         <h2>Webring iframe</h2>
         <p>
             To embed the actual webring widget on your site, you need to use an
-            iframe pointing to the <code>/ring</code> endpoint:
+            iframe pointing to the <code>/ring</code> endpoint with the url of
+            your site in the <code>url</code> query parameter:
         </p>
         <pre class="prettyprint lang-html">
             &ltiframe
-                src="https://ring.pre1ude.dev/ring"
+                src="https://ring.pre1ude.dev/ring?url=https://your-site.com"
                 width="300px"
                 height="100px"
                 frameborder="0"
