@@ -26,8 +26,8 @@
         };
     }
 
-    let darkMode: boolean = false;
-    let rotation: string = "0deg";
+    let darkMode: boolean = $state(false);
+    let rotation: string = $state("0deg");
 
     function toggleDarkMode() {
         darkMode = !darkMode;
@@ -55,7 +55,10 @@
     onMount(() => {
         const savedDarkMode =
             getCookie("darkMode") ||
-            window.matchMedia("(prefers-color-scheme: dark)").matches;
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "true"
+                : "false";
+        $inspect(savedDarkMode);
         if (savedDarkMode === "true") {
             darkMode = true;
             rotation = "360deg";
