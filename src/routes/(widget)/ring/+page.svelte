@@ -48,7 +48,7 @@
             .then((data) => {
                 previous = data.previous;
                 next = data.next;
-                pageDisplay = data.display || "flex";
+                pageDisplay = "flex";
             })
             .catch((error) => {
                 console.error("Error fetching neighbours:", error);
@@ -88,6 +88,15 @@
         }}>▶</a
     >
 </div>
+{#if pageDisplay === "none"}
+    <div
+        style="display: flex; justify-content: center; align-items: center; height: 100vh;"
+    >
+        <p style="color: var(--fg); font-size: 24px;">
+            {page.url.protocol}//{page.url.hostname}
+        </p>
+    </div>
+{/if}
 
 <style>
     :global(body) {
@@ -95,7 +104,7 @@
     }
 
     div {
-        display: var(--display, flex);
+        display: var(--display);
 
         height: 100%;
         width: 100%;
