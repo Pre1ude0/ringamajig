@@ -29,7 +29,7 @@
             goto("/");
         }
 
-        currentPageUrl = `${window.parent.location.protocol}//${window.parent.location.hostname}`;
+        currentPageUrl = `https://${window.parent.location.hostname}`;
         console.log($state.snapshot(currentPageUrl));
         fetch("/api/get-neighbours", {
             method: "POST",

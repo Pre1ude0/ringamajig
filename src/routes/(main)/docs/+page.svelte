@@ -10,6 +10,12 @@
     });
 </script>
 
+<svelte:head>
+    <script
+        src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"
+    ></script>
+</svelte:head>
+
 <div class="view">
     <div class="container">
         <h1>Ring-amajig documentation</h1>
