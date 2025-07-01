@@ -62,8 +62,8 @@
     }
 
     .logo path {
-        fill: var(--fg);
-        stroke: var(--fg);
+        fill: var(--color, var(--fg));
+        stroke: var(--color, var(--fg));
 
         transition:
             fill 0.3s ease-in-out,
