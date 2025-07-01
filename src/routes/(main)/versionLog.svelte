@@ -50,7 +50,7 @@
         }
     }
 
-    .close button {
+    :global(button.close) {
         transform: rotate(180deg);
 
         &:hover {
@@ -103,8 +103,9 @@
             transform 0.15s var(--overshoot),
             background-color 0.3s ease-in-out,
             border-color 0.3s ease-in-out;
-        &.close {
-            transform: translateY(0);
-        }
+    }
+
+    :global(.box.close) {
+        transform: translateY(0);
     }
 </style>
