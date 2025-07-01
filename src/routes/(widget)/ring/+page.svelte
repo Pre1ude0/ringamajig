@@ -44,6 +44,7 @@
 
         currentPageUrl =
             new URL(window.location.href).searchParams.get("url") || "";
+        currentPageUrl = currentPageUrl.replace(/\/$/, ""); // Remove trailing slash
 
         testMode =
             new URL(window.location.href).searchParams.get("test") === "true";
