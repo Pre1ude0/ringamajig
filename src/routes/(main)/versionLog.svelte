@@ -50,7 +50,7 @@
         }
     }
 
-    :global(button.close) {
+    :global(.close button) {
         transform: rotate(180deg);
 
         &:hover {
