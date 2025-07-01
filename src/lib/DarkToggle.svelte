@@ -34,6 +34,7 @@
         document.body.style.colorScheme = darkMode ? "dark" : "light";
         rotation = darkMode ? "360deg" : "0deg";
         document.cookie = `darkMode=${darkMode}; path=/; max-age=31536000`; // 1 year
+        console.log(document.cookie);
     }
 
     function getCookie(cname: string) {
@@ -53,11 +54,14 @@
     }
 
     onMount(() => {
+        console.log(getCookie("darkMode"));
+
         const savedDarkMode =
-            getCookie("darkMode") ||
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "true"
-                : "false";
+            getCookie("darkMode") !== null
+                ? getCookie("darkMode")
+                : window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? "true"
+                  : "false";
         $inspect(savedDarkMode);
         if (savedDarkMode === "true") {
             darkMode = true;
