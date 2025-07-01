@@ -5,12 +5,13 @@
     onMount(() => {
         if (window.PR) {
             window.PR.prettyPrint();
-            addCopyButtons();
         }
+        addCopyButtons();
     });
 </script>
 
 <svelte:head>
+    <link rel="stylesheet" href="/prettify.css" />
     <script
         src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"
     ></script>
@@ -32,7 +33,16 @@
         </note>
     </div>
     <div class="container">
-        <h2 id="how-to-join">How to join</h2>
+        <h2 id="how-to-join">
+            "How do I join?" <span style="font-size: 0.5em;"
+                >- You, supposedly</span
+            >
+        </h2>
+        <p>
+            Fret not my fellow indie dev enthusiast! I have written this guide
+            to my best ability to explain how <strong>you</strong> can become part
+            of this niche internet community
+        </p>
         <note data-type="warning">
             <div class="title">
                 <i class="nf nf-fa-circle_exclamation"></i> read first
@@ -55,7 +65,7 @@
                 </p>
             </div>
         </note>
-        <note data-type="critical">
+        <!-- <note data-type="critical">
             <div class="title">
                 <i class="nf nf-fa-warning"></i> NOTICE
             </div>
@@ -68,7 +78,7 @@
                     state!
                 </p>
             </div>
-        </note>
+        </note> -->
         <h2>Meta tags</h2>
         <p>
             Ring-amajig requires your site to have a set of
@@ -79,7 +89,7 @@
             pages
         </p>
         <h3>Meta tags handled by the ringamajig api:</h3>
-        <table class="meta-tags">
+        <table data-type="meta-tags">
             <thead>
                 <tr>
                     <th>Meta Tag</th>
@@ -166,7 +176,7 @@
             </div>
         </note>
         <h3>Example:</h3>
-        <p>Heres the meta tags of the ring-amajig webring</p>
+        <p>These are the meta tags of the ring-amajig webring</p>
         <pre class="prettyprint lang-html">
             &lt!-- Required tags --&gt
             &ltmeta property="og:title" content="Ring-amajig" /&gt
@@ -183,24 +193,136 @@
         <h2>Webring iframe</h2>
         <p>
             To embed the actual webring widget on your site, you need to use an
-            iframe pointing to the <code>/ring</code> endpoint with the url of
-            your site in the <code>url</code> query parameter:
+            iframe pointing to the <code>/ring</code> route of the ringamajig
+            page with the url of your site in the <code>url</code>
+            <a href="https://en.wikipedia.org/wiki/Query_string"
+                >query parameter</a
+            >
+            like so:
         </p>
         <pre class="prettyprint lang-html">
             &ltiframe
                 src="https://ring.pre1ude.dev/ring?url=https://your-site.com"
-                width="300px"
+                width="230px"
                 height="100px"
                 frameborder="0"
                 scrolling="no"
             &gt&lt/iframe&gt
         </pre>
+        <p>
+            There are also some optional parameters you can use to customize the
+            look of the contents of the iframe on your page via querying them
+            together like so:
+        </p>
+        <pre>
+            https://ring.pre1ude.dev/ring?url=https://your-site.com&fgcolor=#ffffff&bgcolor=#000000
+        </pre>
+        <note data-type="info">
+            <div class="title">
+                <i class="nf nf-fa-circle_info"></i> note
+            </div>
+            <div class="content">
+                <p>
+                    iframe not showing up even though you've set <code>url</code
+                    >
+                    like shown?
+                    <a href="/1.png" target="_blank"
+                        >Thats intended, not a bug</a
+                    > - if you're not verified/approved yet, the iframe won't show
+                    any content, eliminating that akward phase of having a widget
+                    on your site that doesn't work!
+                </p>
+                <p>
+                    Still want to customize your widget? No problem! Just add <code
+                        >test=true</code
+                    > to your query and configure your iframe that way for the time
+                    being! Just remember to remove it when pushing your site live
+                </p>
+            </div>
+        </note>
+        <h3>Query parameters handled by the ring-amajig iframe:</h3>
+        <table data-type="query-parameters">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="required">
+                    <td><code>url</code></td>
+                    <td
+                        >The <a
+                            href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls"
+                            target="_blank">absolute URL</a
+                        >
+                        of your site, which should match the
+                        <code>og:url</code> meta tag</td
+                    >
+                    <td><i>None</i></td>
+                </tr>
+                <tr class="optional">
+                    <td><code>test</code></td>
+                    <td
+                        >If set to <code>true</code>, the iframe will display a
+                        test format of the webring that doesn't check for
+                        validity of the <code>url</code> value (mainly for people
+                        are yet to be verified and want to experiment with how the
+                        widget would look on their site)
+                    </td>
+                    <td><code>false</code></td>
+                </tr><tr class="optional">
+                    <td><code>fgcolor</code></td>
+                    <td
+                        >The foreground color of the webring widget, in <a
+                            href="https://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form"
+                            target="_blank">hex</a
+                        >
+                        or html color (e.g. <code>red</code>) format</td
+                    >
+                    <td
+                        ><span style="--color: var(--fg)" class="color"
+                        ></span></td
+                    >
+                </tr>
+                <tr class="optional">
+                    <td><code>bgcolor</code></td>
+                    <td
+                        >The background color of the webring widget, in <a
+                            href="https://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form"
+                            target="_blank">hex</a
+                        >
+                        or html color (e.g. <code>red</code>) format</td
+                    >
+                    <td
+                        ><span class="color" style="--color: var(--bg)"
+                        ></span></td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <h2>What next?</h2>
+        <p>
+            Added all of the required meta tags and the iframe? Great! Your work
+            here is done!
+        </p>
+        <p>
+            Now you just have to wait for me to approve your site and you'll be
+            able to see it on the <a
+                href="https://ring.pre1ude.dev"
+                target="_blank">main page</a
+            >!
+        </p>
     </div>
 </div>
 
 <style>
     .view {
         padding-top: 100px;
+        padding-bottom: 100px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -228,6 +350,10 @@
         margin-top: 1.5em;
         margin-left: 1em;
         margin-bottom: 0.5em;
+    }
+
+    p {
+        font-size: 1.2em;
     }
 
     note {
@@ -305,10 +431,10 @@
         text-indent: 1.5em;
     }
 
-    table.meta-tags {
+    table {
         border-radius: var(--border-radius);
         margin-bottom: 1em;
-        width: 90%;
+        width: 96%;
         border-collapse: collapse;
         border: 1px solid transparent;
         margin-left: 2%;
@@ -319,7 +445,7 @@
             position: relative;
         }
 
-        .required code:after {
+        .required td:first-of-type code:before {
             position: absolute;
             top: -5px;
             right: -10px;
@@ -332,6 +458,15 @@
             padding: 0.5em;
             border-bottom: 1px solid var(--fg);
             border-right: 1px solid var(--fg);
+
+            span.color {
+                display: block;
+                width: 100%;
+                height: 1.5em;
+                background-color: var(--color);
+                border: 1px var(--fg) solid;
+                border-radius: var(--border-radius);
+            }
         }
 
         td:last-child,
@@ -345,6 +480,13 @@
 
         th {
             font-weight: bold;
+        }
+    }
+
+    table[data-type="query-parameters"] {
+        td:last-child,
+        th:last-child {
+            text-align: right;
         }
     }
 
@@ -369,11 +511,4 @@
             left: -6px;
         }
     } */
-
-    pre {
-        margin: 0 1em 2em 1em;
-        padding: 1em;
-        border-radius: var(--border-radius);
-        overflow-x: auto;
-    }
 </style>

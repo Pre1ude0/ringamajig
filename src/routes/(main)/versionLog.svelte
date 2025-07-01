@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
 
     let versionLog: string = $state("");
+    let close: boolean = $state(false);
 
     onMount(async () => {
         try {
@@ -15,21 +16,58 @@
     });
 </script>
 
-<div class="box">
-    <h1>Version Log</h1>
+<div class="box" class:close>
+    <h1 class="tag">Version Log <i class="nf nf-md-book tag"></i></h1>
+    <button
+        onclick={() => (close = !close)}
+        aria-label="Toggle visibility of log"
+        ><i class="nf nf-seti-play_arrow"></i></button
+    >
+
     <div class="log">
         <Markdown source={versionLog} />
     </div>
 </div>
 
 <style>
-    h1 {
-        text-align: right;
-        margin: 10px 20px;
+    button {
         position: absolute;
-        top: 0;
-        right: 0;
-        transform: rotate(90deg) translateY(-182%) translateX(50%);
+        bottom: 5px;
+        right: 5px;
+        background-color: transparent;
+        border: none;
+        color: var(--fg);
+        cursor: pointer;
+        font-size: 2rem;
+        padding: 10px;
+        transition:
+            color 0.3s,
+            transform 0.15s var(--overshoot);
+
+        &:hover {
+            color: var(--accent);
+            transform: translateX(2px);
+        }
+    }
+
+    .close button {
+        transform: rotate(180deg);
+
+        &:hover {
+            transform: rotate(180deg) translateX(2px);
+        }
+    }
+
+    h1.tag {
+        text-align: right;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 20px;
+        right: 7px;
+        aspect-ratio: 1 / 1;
+        transform: rotate(90deg);
+        pointer-events: none;
     }
 
     .log {
@@ -61,8 +99,11 @@
         background-color: var(--bg);
         border-radius: var(--border-radius);
 
-        transition: transform 0.15s var(--overshoot);
-        &:hover {
+        transition:
+            transform 0.15s var(--overshoot),
+            background-color 0.3s ease-in-out,
+            border-color 0.3s ease-in-out;
+        &.close {
             transform: translateY(0);
         }
     }
