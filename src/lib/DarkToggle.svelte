@@ -136,5 +136,11 @@
                 transform 0.2s ease,
                 opacity 0.15s ease-in-out;
         }
+
+        @media screen and (max-width: 600px) {
+            span {
+                display: none;
+            }
+        }
     }
 </style>

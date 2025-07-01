@@ -273,4 +273,35 @@
             animation: loading 1.5s ease-in-out infinite;
         }
     }
+
+    @media screen and (max-width: 600px) {
+        .tile {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            height: auto;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .left {
+            width: 100%;
+            max-width: 100% !important;
+        }
+
+        .right {
+            max-width: 100% !important;
+            width: 100%;
+            margin-top: 10px;
+
+            img {
+                width: 100% !important;
+                max-width: 100%;
+                height: 200px !important;
+
+                object-fit: cover;
+            }
+        }
+    }
 </style>

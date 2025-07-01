@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
 
     let versionLog: string = $state("");
-    let close: boolean = $state(false);
+    let open: boolean = $state(false);
 
     onMount(async () => {
         try {
@@ -16,11 +16,9 @@
     });
 </script>
 
-<div class="box" class:close>
-    <h1 class="tag">Version Log <i class="nf nf-md-book tag"></i></h1>
-    <button
-        onclick={() => (close = !close)}
-        aria-label="Toggle visibility of log"
+<div class="box" class:open>
+    <h1 class="tag">Version Log</h1>
+    <button onclick={() => (open = !open)} aria-label="Toggle visibility of log"
         ><i class="nf nf-seti-play_arrow"></i></button
     >
 
@@ -50,7 +48,7 @@
         }
     }
 
-    :global(.close button) {
+    :global(.open button) {
         transform: rotate(180deg);
 
         &:hover {
@@ -105,7 +103,58 @@
             border-color 0.3s ease-in-out;
     }
 
-    :global(.box.close) {
+    :global(.box.open) {
         transform: translateY(0);
+    }
+
+    @media screen and (max-width: 600px) {
+        .box {
+            width: 70%;
+            left: 15px;
+            top: 0;
+            transform: translateY(-90%);
+            padding-right: 0;
+            padding-bottom: 80px;
+
+            transition:
+                transform 0.3s ease-in-out,
+                background-color 0.3s ease-in-out,
+                border-color 0.3s ease-in-out,
+                width 0.3s ease-in-out,
+                left 0.3s ease-in-out;
+        }
+
+        :global(.box.open) {
+            transform: translateY(0);
+            box-sizing: border-box;
+            width: 100%;
+            left: 0;
+        }
+
+        h1.tag {
+            top: auto;
+            right: auto;
+            aspect-ratio: unset;
+            bottom: 15px;
+            left: 20px;
+            transform: rotate(0deg);
+        }
+
+        button {
+            bottom: 10px;
+            right: 10px;
+            transform: rotate(90deg);
+        }
+
+        :global(.box.open button) {
+            transform: rotate(-90deg);
+        }
+
+        .log {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
     }
 </style>

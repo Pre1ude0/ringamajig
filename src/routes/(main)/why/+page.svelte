@@ -92,4 +92,24 @@
         text-indent: 2em;
         line-height: 1.5;
     }
+
+    @media screen and (max-width: 600px) {
+        .container {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        p {
+            font-size: 1em;
+        }
+    }
 </style>

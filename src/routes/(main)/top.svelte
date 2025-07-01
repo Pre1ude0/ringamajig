@@ -123,4 +123,23 @@
         align-items: center;
         justify-content: center;
     }
+
+    @media screen and (max-width: 600px) {
+        h1 {
+            font-size: 3em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+
+        .parent {
+            margin-top: 50px;
+            flex-direction: column-reverse;
+            gap: 0;
+
+            .child {
+                padding: 0;
+            }
+        }
+    }
 </style>

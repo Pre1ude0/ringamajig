@@ -35,5 +35,6 @@
         color: var(--fg);
         list-style: none;
         margin: 0;
+        margin-bottom: 40px;
     }
 </style>

@@ -510,6 +510,39 @@
         }
     }
 
+    @media screen and (max-width: 600px) {
+        .container {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 1em;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            margin-top: 1em;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        table {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        note {
+            margin: 0.5em 0;
+        }
+    }
+
     /* li {
         margin-bottom: 0.5em;
         padding-left: 0.5em;
