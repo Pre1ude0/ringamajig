@@ -128,14 +128,14 @@
 
 <style>
     :global(body) {
-        background-color: transparent;
+        background-color: var(--cust-bg, var(--bg));
         height: 100%;
         width: 100%;
     }
 
     div {
         display: var(--display);
-
+        box-sizing: border-box;
         height: 100%;
         width: 100%;
         justify-content: center;
