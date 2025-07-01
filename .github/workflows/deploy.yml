@@ -22,5 +22,6 @@ jobs:
                   script: |
                       cd /srv/ringamajig
                       git pull origin master
+                      npm install
                       npm run build
                       sudo systemctl restart ringamajig.service
