@@ -54,7 +54,8 @@
 
     onMount(() => {
         const savedDarkMode =
-            getCookie("darkMode") || localStorage.getItem("darkMode");
+            getCookie("darkMode") ||
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
         if (savedDarkMode === "true") {
             darkMode = true;
             rotation = "360deg";
