@@ -29,8 +29,8 @@
             goto("/");
         }
 
-        currentPageUrl = `https://${window.parent.location.hostname}`;
-        console.log($state.snapshot(currentPageUrl));
+        currentPageUrl =
+            new URL(window.location.href).searchParams.get("page") || "";
         fetch("/api/get-neighbours", {
             method: "POST",
             headers: {
