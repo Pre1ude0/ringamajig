@@ -49,6 +49,20 @@
                 </p>
             </div>
         </note>
+        <note data-type="critical">
+            <div class="title">
+                <i class="nf nf-fa-warning"></i> NOTICE
+            </div>
+            <div class="content">
+                <p>
+                    Related to the previous note above this one (which if you
+                    haven't read - shame on you), the webring is <strong
+                        >currently NOT</strong
+                    > accepting entries as it's still very much in a beta/unfinished
+                    state!
+                </p>
+            </div>
+        </note>
         <h2>Meta tags</h2>
         <p>
             Ring-amajig requires your site to have a set of
@@ -261,6 +275,17 @@
 
             position: relative;
             border: 1px var(--info) solid;
+
+            border-radius: var(--border-radius);
+        }
+
+        &[data-type="critical"] {
+            .title {
+                background-color: var(--error);
+            }
+
+            position: relative;
+            border: 1px var(--error) solid;
 
             border-radius: var(--border-radius);
         }
