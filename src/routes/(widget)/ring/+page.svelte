@@ -93,7 +93,7 @@
         style="display: flex; justify-content: center; align-items: center; height: 100vh;"
     >
         <p style="color: var(--fg); font-size: 24px;">
-            {window.parent.location.protocol}//{window.parent.location.hostname}
+            {currentPageUrl}
         </p>
     </div>
 {/if}
