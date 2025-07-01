@@ -29,7 +29,7 @@
             goto("/");
         }
 
-        currentPageUrl = `${page.url.protocol}//${page.url.host}`;
+        currentPageUrl = `${page.url.protocol}//${page.url.hostname}`;
         fetch("/api/get-neighbours", {
             method: "POST",
             headers: {
