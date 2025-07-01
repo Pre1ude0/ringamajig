@@ -215,7 +215,7 @@
             together like so:
         </p>
         <pre>
-            https://ring.pre1ude.dev/ring?url=https://your-site.com&fgcolor=#ffffff&bgcolor=#000000
+            https://ring.pre1ude.dev/ring?url=https://your-site.com&fgcolor=ffffff&bgcolor=000000
         </pre>
         <note data-type="info">
             <div class="title">
@@ -302,6 +302,26 @@
                 </tr>
             </tbody>
         </table>
+        <note data-type="warning">
+            <div class="title">
+                <i class="nf nf-fa-circle_exclamation"></i> defining hex colors
+            </div>
+            <div class="content">
+                <p>
+                    The hex color codes should be passed without the <code
+                        >#</code
+                    >
+                    character as it will start a
+                    <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/URL/hash"
+                        target="_blank">hash</a
+                    >
+                    in the query string (e.g.
+                    <code>ff0000</code>
+                    for red, not <code>#ff0000</code>)
+                </p>
+            </div>
+        </note>
     </div>
     <div class="container">
         <h2>What next?</h2>
