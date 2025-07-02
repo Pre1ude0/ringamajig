@@ -37,6 +37,10 @@
             <div class="img"></div>
         </div>
     {:else if page && page.og}
+        <div
+            class="theme-color"
+            style="background-color: {page.themeColor || 'transparent'}"
+        ></div>
         <div class="left" in:blur={{ duration: 500 }}>
             <div class="top">
                 <a
@@ -49,10 +53,6 @@
                 >
                     {page.og["og:title"]}
                 </a>
-                <span
-                    class="theme-color"
-                    style="background-color: {page.themeColor || 'transparent'}"
-                ></span>
             </div>
             <a
                 href={page.og["og:url"]}
@@ -79,6 +79,17 @@
 
 <style>
     .tile {
+        .theme-color {
+            position: absolute;
+            height: 100%;
+            width: 5px;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            border-top-left-radius: var(--border-radius);
+            border-bottom-left-radius: var(--border-radius);
+        }
+
         position: relative;
         display: flex;
         flex-direction: row;
@@ -118,17 +129,10 @@
 
         .left {
             .top {
-                max-width: 100%;
+                width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                gap: 10px;
-
-                .theme-color {
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                }
+                justify-content: flex-start;
             }
 
             max-width: calc(70% - 20px);
@@ -195,14 +199,17 @@
         }
 
         .right {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-shrink: 0;
+            gap: 2px;
+
             max-width: 30%;
             z-index: 1;
 
             img {
+                object-fit: cover;
                 height: 100%;
                 width: auto;
             }

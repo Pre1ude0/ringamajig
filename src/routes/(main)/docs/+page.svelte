@@ -432,7 +432,7 @@
             border-radius: var(--border-radius);
         }
 
-        &[data-type="critical"] {
+        /* &[data-type="critical"] {
             .title {
                 background-color: var(--error);
             }
@@ -441,7 +441,7 @@
             border: 1px var(--error) solid;
 
             border-radius: var(--border-radius);
-        }
+        } */
 
         transition: border-color 0.3s ease-in-out;
     }
