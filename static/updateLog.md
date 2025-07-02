@@ -1,3 +1,9 @@
+# Version 1.2
+- Made a site validity checker that makes sure your site has the webring widget
+- Implemented the validity checker into a multitude of parts of the webring
+
+---
+
 # Version 1.1
 - Added mobile support
 - Fixed dark mode issues

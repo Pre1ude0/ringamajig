@@ -1,3 +1,4 @@
+import { checkPageValidity } from "$lib/checkPageValidity.js";
 import { json } from "@sveltejs/kit";
 
 async function getNeighours(
@@ -19,8 +20,30 @@ async function getNeighours(
 
             let pageIndex = pages.indexOf(url);
 
-            let previous = pages[pageIndex - 1] || pages[pages.length - 1];
-            let next = pages[pageIndex + 1] || pages[0];
+            let previousIndex = pageIndex - 1;
+            let nextIndex = pageIndex + 1;
+
+            while (previousIndex < 0) {
+                previousIndex += pages.length;
+            }
+
+            while (nextIndex >= pages.length) {
+                nextIndex -= pages.length;
+            }
+
+            let previous = pages[previousIndex];
+            let next = pages[nextIndex];
+
+            while (!checkPageValidity(previous)) {
+                previousIndex =
+                    (previousIndex - 1 + pages.length) % pages.length;
+                previous = pages[previousIndex];
+            }
+
+            while (!checkPageValidity(next)) {
+                nextIndex = (nextIndex + 1) % pages.length;
+                next = pages[nextIndex];
+            }
 
             return [previous, next];
         })
