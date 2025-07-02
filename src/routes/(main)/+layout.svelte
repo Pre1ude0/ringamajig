@@ -35,6 +35,10 @@
             text-align: center;
             color: white;
         }
+
+        a {
+            text-align: center;
+        }
     }
 
     .divider {
