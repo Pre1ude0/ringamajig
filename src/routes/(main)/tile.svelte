@@ -17,9 +17,9 @@
 </script>
 
 <div
-    class="tile {!page || !page.og ? 'loading' : ''}"
+    class="tile {!page || !page.og ? 'loading' : ''} "
     in:fly={{ y: 20, duration: 300, delay: index * 100 }}
-    style="--index: '{index}'"
+    style="--index: '{index}'; --pride-flag: var(--{page.prideFlag});"
 >
     {#if !page || !page.og}
         <div class="left">
@@ -111,20 +111,24 @@
         &:before {
             content: var(--index);
             position: absolute;
-            top: 0;
+            top: 10%;
             left: 0;
-            bottom: 0;
+            bottom: 10%;
             right: 0;
             font-size: 10em;
-            color: var(--fg);
+            /* color: var(--fg); */
             filter: blur(5px);
-            opacity: 0.1;
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
             z-index: 0;
             transition: color 0.3s ease-in-out;
+
+            background: var(--pride-flag, #ffffff40);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .left {

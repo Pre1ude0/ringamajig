@@ -15,6 +15,10 @@
     });
 </script>
 
+<svelte:head>
+    <link rel="stylesheet" href="/gaydients.css" />
+</svelte:head>
+
 <div>
     {#each pageList as url, i}
         <Tile index={i} pageName={url} />

@@ -45,9 +45,12 @@ export const POST = async ({ request }) => {
         const themeColor =
             $('meta[name="theme-color"]').attr("content") || null;
 
+        const prideFlag = $('meta[name="pride-flag"]').attr("content") || null;
+
         return json({
             og,
             themeColor,
+            prideFlag,
         });
     } catch (err) {
         console.error(err);

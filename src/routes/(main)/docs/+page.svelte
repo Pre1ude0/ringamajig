@@ -15,6 +15,7 @@
     <script
         src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"
     ></script>
+    <link rel="stylesheet" href="/gaydients.css" />
 </svelte:head>
 
 <div class="view">
@@ -157,6 +158,16 @@
                             target="_blank">some browsers</a
                         ></td
                     >
+                </tr>
+                <tr class="optional">
+                    <td><code>pride-flag</code></td>
+                    <td>name</td>
+                    <td>
+                        The pride flag that'll appear on the index number of
+                        your tile. For a list of available flags, see the <a
+                            href="#pride-flags">full list</a
+                        >
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -337,6 +348,221 @@
             >!
         </p>
     </div>
+    <div class="container">
+        <h2 id="pride-flags">List of available pride flag gradients</h2>
+        <div class="pride-flag-tables">
+            <table data-type="pride-flags">
+                <thead>
+                    <tr>
+                        <th>Flag name</th>
+                        <th>Gradient</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>pride</code></td>
+                        <td
+                            ><span
+                                class="color"
+                                style="--linear-background: var(--pride)"
+                            ></span></td
+                        >
+                    </tr>
+                    <tr>
+                        <td><code>progress-pride</code></td>
+                        <td
+                            ><span
+                                class="color"
+                                style="--linear-background: var(--progress-pride)"
+                            ></span></td
+                        >
+                    </tr>
+                    <tr>
+                        <td><code>transgender</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--transgender)"
+                            >
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>nonbinary</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--nonbinary)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>agender</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--agender)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>genderqueer</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--genderqueer)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>demigirl</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--demigirl)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>demiboy</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--demiboy)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>genderfluid</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--genderfluid)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>bigender</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--bigender)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>intersex</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--intersex)"
+                            ></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table data-type="pride-flags">
+                <thead>
+                    <tr>
+                        <th>Flag name</th>
+                        <th>Gradient</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>bisexual</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--bisexual)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>pansexual</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--pansexual)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>lesbian</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--lesbian)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>gay</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--gay)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>asexual</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--asexual)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>aromantic</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--aromantic)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>aroace</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--aroace)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>abrosexual</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--abrosexual)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>omnisexual</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--omnisexual)"
+                            ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>polysexual</code></td>
+                        <td>
+                            <span
+                                class="color"
+                                style="--linear-background: var(--polysexual)"
+                            ></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -451,6 +677,15 @@
         text-indent: 1.5em;
     }
 
+    .pride-flag-tables {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 1em;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
     table {
         border-radius: var(--border-radius);
         margin-bottom: 1em;
@@ -475,17 +710,36 @@
 
         td,
         th {
+            position: relative;
             padding: 0.5em;
             border-bottom: 1px solid var(--fg);
             border-right: 1px solid var(--fg);
 
             span.color {
                 display: block;
-                width: 100%;
+                width: 4em;
                 height: 1.5em;
-                background-color: var(--color);
+                background: var(--linear-background, var(--color));
                 border: 1px var(--fg) solid;
                 border-radius: var(--border-radius);
+            }
+        }
+
+        &[data-type="pride-flags"] {
+            width: 40%;
+            td {
+                height: 2em;
+            }
+            td:nth-child(2) {
+                width: 10em;
+            }
+            span.color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: rotate(90deg) translateX(-70%) translateY(-40%);
+                width: 2em;
+                height: 6em;
             }
         }
 
