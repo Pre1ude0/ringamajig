@@ -91,6 +91,7 @@
         }
 
         position: relative;
+        overflow: none;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -101,7 +102,7 @@
         height: 150px;
         padding: 20px;
         border: 1px solid var(--fg);
-        border-radius: 8px;
+        border-radius: var(--border-radius);
 
         transition:
             color 0.3s ease-in-out,
@@ -227,7 +228,7 @@
     img {
         max-width: 150px;
         max-height: 150px;
-        border-radius: 8px;
+        border-radius: var(--border-radius);
     }
 
     @keyframes loading {
