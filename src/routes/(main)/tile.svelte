@@ -91,7 +91,7 @@
         }
 
         position: relative;
-        overflow: none;
+        overflow: hidden;
         display: flex;
         flex-direction: row;
         align-items: center;

@@ -603,6 +603,8 @@
     }
 
     note {
+        border-radius: var(--border-radius-secondary);
+        overflow: hidden;
         display: block;
         margin: 0 1em 2em 1em;
 
@@ -643,8 +645,6 @@
 
             position: relative;
             border: 1px var(--warning) solid;
-
-            border-radius: var(--border-radius);
         }
 
         &[data-type="info"] {
@@ -654,8 +654,6 @@
 
             position: relative;
             border: 1px var(--info) solid;
-
-            border-radius: var(--border-radius);
         }
 
         /* &[data-type="critical"] {
@@ -721,7 +719,7 @@
                 height: 1.5em;
                 background: var(--linear-background, var(--color));
                 border: 1px var(--fg) solid;
-                border-radius: var(--border-radius);
+                border-radius: var(--border-radius-secondary);
             }
         }
 
@@ -731,7 +729,7 @@
                 height: 2em;
             }
             td:nth-child(2) {
-                width: 10em;
+                width: 6em;
             }
             span.color {
                 position: absolute;

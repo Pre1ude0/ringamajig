@@ -16,6 +16,7 @@
     --success: light-dark(#4caf50, #4caf50);
 
     --border-radius: 8px;
+    --border-radius-secondary: 4px;
 
     --overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
@@ -38,7 +39,7 @@ code {
     font-size: 0.9em;
     background-color: var(--code);
     padding: 2px 4px;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-secondary);
 
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
