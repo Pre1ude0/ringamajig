@@ -198,6 +198,7 @@
             &lt!-- Optional tags --&gt
             &ltmeta property="og:site_name" content="ring.pre1ude.dev" /&gt
             &ltmeta name="theme-color" content="#ffffff" /&gt
+            &ltmeta name="pride-flag" content="progress-pride" /&gt
         </pre>
     </div>
     <div class="container">
