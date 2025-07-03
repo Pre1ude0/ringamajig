@@ -126,10 +126,11 @@
             z-index: 0;
             transition: color 0.3s ease-in-out;
 
-            background: var(--pride-flag, #ffffff40);
+            background: var(--pride-flag, light-dark(#00000040, #ffffff40));
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: background 0.3s ease-in-out;
         }
 
         .left {
