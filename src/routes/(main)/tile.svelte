@@ -286,6 +286,17 @@
     }
 
     @media screen and (max-width: 600px) {
+        .tile:before {
+            background-size: 100% 40%;
+            background-position-y: 53%;
+            top: 0;
+            filter: blur(3px);
+            bottom: 50%;
+            right: 10%;
+            font-size: 5em;
+            justify-content: flex-end;
+        }
+
         .tile {
             width: 100%;
             max-width: 100%;
