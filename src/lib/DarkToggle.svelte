@@ -34,7 +34,6 @@
         document.body.style.colorScheme = darkMode ? "dark" : "light";
         rotation = darkMode ? "360deg" : "0deg";
         document.cookie = `darkMode=${darkMode}; path=/; max-age=31536000`; // 1 year
-        console.log(document.cookie);
     }
 
     function getCookie(cname: string) {
