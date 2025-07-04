@@ -1,4 +1,4 @@
-import { checkPageValidity } from "$lib/checkPageValidity.js";
+import { checkPageValidity } from "$lib/utils/checkPageValidity.js";
 import { json } from "@sveltejs/kit";
 
 async function getNeighours(

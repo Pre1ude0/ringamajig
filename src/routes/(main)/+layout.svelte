@@ -1,6 +1,6 @@
 <script>
-    import DarkToggle from "$lib/DarkToggle.svelte";
-    import ReturnHome from "$lib/returnHome.svelte";
+    import DarkToggle from "$lib/components/DarkToggle.svelte";
+    import ReturnHome from "$lib/components/returnHome.svelte";
 </script>
 
 <ReturnHome />

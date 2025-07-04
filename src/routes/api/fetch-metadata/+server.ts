@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { checkPageValidity } from "$lib/checkPageValidity";
+import { checkPageValidity } from "$lib/utils/checkPageValidity";
 import * as cheerio from "cheerio";
 
 export const POST = async ({ request, fetch }) => {

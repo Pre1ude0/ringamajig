@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { blur } from "svelte/transition";
     import { goto } from "$app/navigation";
-    import Logo from "$lib/Logo.svelte";
+    import Logo from "$lib/components/Logo.svelte";
 
     let hexRegex6digit = /^[0-9A-F]{6}$/i;
     let hexRegex3digit = /^[0-9A-F]{3}$/i;
@@ -145,6 +145,7 @@
             --width="100px"
             --hover-transform="scale(1.05)"
             --transform={logoLean}
+            --transitions="none"
             --color={custVal.fgcolor || "var(--fg)"}
         />
     </a>

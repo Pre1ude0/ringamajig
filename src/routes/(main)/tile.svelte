@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getOpenGraphData, trunicate } from "$lib/pages";
+    import { getOpenGraphData, trunicate } from "$lib/utils/pages";
     import { onMount } from "svelte";
     import { fly, blur } from "svelte/transition";
 

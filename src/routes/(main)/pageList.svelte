@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getPageList } from "$lib/pages";
+    import { getPageList } from "$lib/utils/pages";
     import { onMount } from "svelte";
     import Tile from "./tile.svelte";
 

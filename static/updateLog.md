@@ -5,7 +5,7 @@
 ---
 
 # Version 1.4
-- Validity checker hotfix (it was very broken)
+- Validity checker patch (it was very broken)
 - New `animdur` query parameter to change the appearing animation duration of the iframe
 
 ---

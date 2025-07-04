@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { addCopyButtons } from "$lib/codeBlock";
+    import { addCopyButtons } from "$lib/utils/codeBlock";
 
     onMount(() => {
         if (window.PR) {

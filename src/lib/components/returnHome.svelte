@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from "$app/state";
     import { goto } from "$app/navigation";
-    import Logo from "$lib/Logo.svelte";
+    import Logo from "$lib/components/Logo.svelte";
     import { blur } from "svelte/transition";
 </script>
 
