@@ -31,10 +31,10 @@
     }
 
     onMount(() => {
-        if (window.self === window.top) {
-            goto("/");
-            return;
-        }
+        // if (window.self === window.top) {
+        //     goto("/");
+        //     return;
+        // }
 
         function isColor(strColor: string) {
             var s = new Option().style;

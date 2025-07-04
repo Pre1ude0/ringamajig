@@ -5,51 +5,48 @@ async function getNeighours(
     url: string,
     fetch: typeof globalThis.fetch,
 ): Promise<string[]> {
-    let pages: Array<string> = await fetch("/pages.txt")
-        .then((response) => response.text())
-        .then(async (data) => {
-            const pages = data
-                .split("\n")
-                .map((line) => line.trim())
-                .filter((line) => line);
+    try {
+        const response = await fetch("/pages.txt");
+        const data = await response.text();
+        const pages = data
+            .split("\n")
+            .map((line) => line.trim())
+            .filter((line) => line);
 
-            if (!pages.includes(url)) {
-                console.error("URL not found in pages.txt");
-                return [];
-            }
-
-            let pageIndex = pages.indexOf(url);
-
-            let previousIndex = pageIndex - 1;
-            let nextIndex = pageIndex + 1;
-
-            for (let i = previousIndex; i >= 0; i--) {
-                if (i < 0) {
-                    i = pages.length - 1;
-                }
-                if (await checkPageValidity(pages[i])) {
-                    previousIndex = i;
-                    break;
-                }
-            }
-
-            for (let i = nextIndex; i < pages.length; i++) {
-                if (i >= pages.length) {
-                    i = 0;
-                }
-                if (await checkPageValidity(pages[i])) {
-                    nextIndex = i;
-                    break;
-                }
-            }
-
-            return [pages[previousIndex], pages[nextIndex]];
-        })
-        .catch((error) => {
-            console.error("Error fetching pages:", error);
+        if (!pages.includes(url)) {
+            console.error("URL not found in pages.txt");
             return [];
-        });
-    return pages;
+        }
+
+        let pageIndex = pages.indexOf(url);
+
+        // Find previous valid neighbour
+        let previous: string;
+        for (let i = pageIndex - 1; ; i--) {
+            if (i < 0) i = pages.length - 1; // Wrap around to the end
+
+            if (pages[i] && (await checkPageValidity(pages[i], fetch))) {
+                previous = pages[i];
+                break;
+            }
+        }
+
+        // Find next valid neighbour
+        let next: string;
+        for (let i = pageIndex + 1; ; i++) {
+            if (i >= pages.length) i = 0; // Wrap around to the start
+
+            if (pages[i] && (await checkPageValidity(pages[i], fetch))) {
+                next = pages[i];
+                break;
+            }
+        }
+
+        return [previous, next];
+    } catch (error) {
+        console.error("Error fetching pages:", error);
+        return [];
+    }
 }
 
 export const POST = async ({ request, fetch }) => {

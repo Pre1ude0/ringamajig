@@ -2,7 +2,7 @@ import { json } from "@sveltejs/kit";
 import { checkPageValidity } from "$lib/checkPageValidity";
 import * as cheerio from "cheerio";
 
-export const POST = async ({ request }) => {
+export const POST = async ({ request, fetch }) => {
     try {
         const { url } = await request.json();
 
@@ -10,7 +10,7 @@ export const POST = async ({ request }) => {
             return json({ error: "Invalid or missing URL." }, { status: 400 });
         }
 
-        const isValid = await checkPageValidity(url);
+        const isValid = await checkPageValidity(url, fetch);
         if (!isValid) {
             return json(
                 { error: "Invalid page or not a Ring page." },
