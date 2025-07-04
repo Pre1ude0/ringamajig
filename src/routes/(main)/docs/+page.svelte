@@ -318,7 +318,7 @@
                         The duration of the appearing animation of the iframe
                         widget in ms
                     </td>
-                    <td><i>500</i></td>
+                    <td><code>500</code></td>
                 </tr>
             </tbody>
         </table>
