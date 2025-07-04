@@ -224,9 +224,7 @@
 
         height: fit-content;
         line-height: 55px;
-        transition:
-            color 0.3s ease,
-            transform 0.3s var(--overshoot);
+        transition: transform 0.3s var(--overshoot);
 
         &:hover {
             transform: translateX(var(--hover-X));
