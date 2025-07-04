@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { blur } from "svelte/transition";
     import { goto } from "$app/navigation";
     import Logo from "$lib/Logo.svelte";
 
@@ -11,7 +12,7 @@
 
     let currentPageUrl: string = $state("");
     let showPage: boolean = $state(false);
-    let customValues: any = $state({});
+    let custVal: any = $state({});
     let testMode: boolean = $state(false);
 
     let logoLean: string = $state("none");
@@ -31,10 +32,10 @@
     }
 
     onMount(() => {
-        // if (window.self === window.top) {
-        //     goto("/");
-        //     return;
-        // }
+        if (window.self === window.top) {
+            goto("/");
+            return;
+        }
 
         function isColor(strColor: string) {
             var s = new Option().style;
@@ -49,34 +50,37 @@
         testMode =
             new URL(window.location.href).searchParams.get("test") === "true";
 
-        customValues = {
+        custVal = {
             bgcolor: new URL(window.location.href).searchParams.get("bgcolor"),
             fgcolor: new URL(window.location.href).searchParams.get("fgcolor"),
+            animdur:
+                new URL(window.location.href).searchParams.get("animdur") ||
+                "500",
         };
 
-        if (!isColor(customValues.bgcolor)) {
+        if (!isColor(custVal.bgcolor)) {
             if (
-                !hexRegex6digit.test(customValues.bgcolor) &&
-                !hexRegex3digit.test(customValues.bgcolor)
+                !hexRegex6digit.test(custVal.bgcolor) &&
+                !hexRegex3digit.test(custVal.bgcolor)
             ) {
-                customValues.bgcolor = "var(--bg)";
+                custVal.bgcolor = "var(--bg)";
             } else {
-                customValues.bgcolor = `#${customValues.bgcolor}`;
+                custVal.bgcolor = `#${custVal.bgcolor}`;
             }
         }
 
-        if (!isColor(customValues.fgcolor)) {
+        if (!isColor(custVal.fgcolor)) {
             if (
-                !hexRegex6digit.test(customValues.fgcolor) &&
-                !hexRegex3digit.test(customValues.fgcolor)
+                !hexRegex6digit.test(custVal.fgcolor) &&
+                !hexRegex3digit.test(custVal.fgcolor)
             ) {
-                customValues.fgcolor = "var(--fg)";
+                custVal.fgcolor = "var(--fg)";
             } else {
-                customValues.fgcolor = `#${customValues.fgcolor}`;
+                custVal.fgcolor = `#${custVal.fgcolor}`;
             }
         }
 
-        setBodyBg(customValues.bgcolor);
+        setBodyBg(custVal.bgcolor);
 
         if (testMode) {
             showPage = true;
@@ -113,8 +117,8 @@
 
 <div
     style="
-        --cust-bg: {customValues.bgcolor};
-        --cust-fg: {customValues.fgcolor};
+        --cust-bg: {custVal.bgcolor};
+        --cust-fg: {custVal.fgcolor};
         "
 >
     {#if showPage}
@@ -127,18 +131,20 @@
             }}
             onmouseleave={() => {
                 leanLogo("reset");
-            }}>◀</a
+            }}
+            in:blur={{ duration: custVal.animdur }}>◀</a
         >
         <a
             href="https://ring.pre1ude.dev"
             target="_top"
             data-watermark={testMode}
+            in:blur={{ duration: custVal.animdur }}
         >
             <Logo
                 --width="100px"
                 --hover-transform="scale(1.05)"
                 --transform={logoLean}
-                --color={customValues.fgcolor || "var(--fg)"}
+                --color={custVal.fgcolor || "var(--fg)"}
             />
         </a>
         <a
@@ -150,7 +156,8 @@
             }}
             onmouseleave={() => {
                 leanLogo("reset");
-            }}>▶</a
+            }}
+            in:blur={{ duration: custVal.animdur }}>▶</a
         >
     {/if}
 </div>

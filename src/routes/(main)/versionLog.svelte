@@ -58,6 +58,7 @@
 
     h1.tag {
         text-align: right;
+        color: var(--fg);
         margin: 0;
         padding: 0;
         position: absolute;
