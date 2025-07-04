@@ -25,10 +25,6 @@
         <div class="left">
             <div class="top">
                 <div class="page-title"></div>
-                <span
-                    class="theme-color"
-                    style="background-color: 'transparent'"
-                ></span>
             </div>
             <div class="url"></div>
             <div class="description"></div>
@@ -144,7 +140,7 @@
                 justify-content: flex-start;
             }
 
-            max-width: calc(70% - 20px);
+            width: calc(70% - 20px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -159,7 +155,7 @@
                 text-overflow: ellipsis;
                 line-clamp: 1;
                 overflow: hidden;
-                max-width: calc(100% - 20px);
+                width: 100%;
 
                 transition: color 0.3s ease-in-out;
 
