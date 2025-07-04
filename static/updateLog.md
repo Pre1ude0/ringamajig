@@ -1,3 +1,9 @@
+# Version 1.4
+- Validity checker hotfix (it was very broken)
+- New `animdur` query parameter to change the appearing animation duration of the iframe
+
+---
+
 # Version 1.3
 - Customizable iframe index pride flag colors via meta tags (feat.)
 - Redid theme colors for page tiles

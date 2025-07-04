@@ -23,7 +23,9 @@
     >
 
     <div class="log">
-        <Markdown source={versionLog} />
+        <div class="log-text">
+            <Markdown source={versionLog} />
+        </div>
     </div>
 </div>
 
@@ -72,9 +74,14 @@
     .log {
         width: 400px;
         height: 500px;
-        padding: 10px;
+        padding: 30px;
 
         overflow-y: scroll;
+        direction: rtl;
+
+        .log-text {
+            direction: ltr;
+        }
     }
 
     :global(.log li) {

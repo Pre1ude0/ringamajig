@@ -312,6 +312,14 @@
                         ></span></td
                     >
                 </tr>
+                <tr class="optional">
+                    <td><code>animdur</code></td>
+                    <td>
+                        The duration of the appearing animation of the iframe
+                        widget in ms
+                    </td>
+                    <td><i>500</i></td>
+                </tr>
             </tbody>
         </table>
         <note data-type="warning">

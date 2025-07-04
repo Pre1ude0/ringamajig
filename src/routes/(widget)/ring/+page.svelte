@@ -166,6 +166,13 @@
     :global(body) {
         height: 100% !important;
         width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: none;
     }
 
     div {
