@@ -1,3 +1,9 @@
+# Hotfix 1.4.1
+- Added a new method for validating sites because a certain *someone* ~~cough cough Natalie cough~~ had a dynamically generated site, that I hadn't accounted for previously
+- A very minor theme colour styling change in the main webring page
+
+---
+
 # Version 1.4
 - Validity checker hotfix (it was very broken)
 - New `animdur` query parameter to change the appearing animation duration of the iframe

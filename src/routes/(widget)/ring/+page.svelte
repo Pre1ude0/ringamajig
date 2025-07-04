@@ -134,19 +134,21 @@
             }}
             in:blur={{ duration: custVal.animdur }}>◀</a
         >
-        <a
-            href="https://ring.pre1ude.dev"
-            target="_top"
-            data-watermark={testMode}
-            in:blur={{ duration: custVal.animdur }}
-        >
-            <Logo
-                --width="100px"
-                --hover-transform="scale(1.05)"
-                --transform={logoLean}
-                --color={custVal.fgcolor || "var(--fg)"}
-            />
-        </a>
+    {/if}
+    <a
+        href="https://ring.pre1ude.dev"
+        target="_top"
+        data-watermark={testMode}
+        in:blur={{ duration: custVal.animdur }}
+    >
+        <Logo
+            --width="100px"
+            --hover-transform="scale(1.05)"
+            --transform={logoLean}
+            --color={custVal.fgcolor || "var(--fg)"}
+        />
+    </a>
+    {#if showPage}
         <a
             href={next}
             target="_top"

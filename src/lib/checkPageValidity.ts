@@ -1,26 +1,24 @@
-import * as cheerio from "cheerio";
+import { pullCheerio, pullPuppeteer } from "./pullPageContent";
 
 export async function checkPageValidity(
     url: string,
     fetch: typeof globalThis.fetch,
 ): Promise<boolean> {
     try {
-        const response = await fetch(url);
-        if (!response.ok) {
+        if (!url || typeof url !== "string") {
+            console.error("Invalid URL provided:", url);
             return false;
         }
-        const html = await response.text();
-        const $ = cheerio.load(html);
-        let sources: Array<string> = [];
 
-        $("iframe").each((_, iframe) => {
-            const src = $(iframe).attr("src");
-            if (src && src.startsWith("https://ring.pre1ude.dev/ring")) {
-                sources.push(src);
+        let sources: Array<string> | null = await pullCheerio(url, fetch);
+        if (sources === null) {
+            console.warn("Cheerio failed, trying Puppeteer for: " + url);
+            sources = await pullPuppeteer(url);
+            if (sources === null || sources.length === 0) {
+                console.warn("No valid sources found for:", url);
+                return false;
             }
-        });
-
-        if (sources.length === 0) return false;
+        }
 
         for (let src of sources) {
             let urlObj = new URL(src);

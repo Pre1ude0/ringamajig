@@ -10,12 +10,11 @@ export const POST = async ({ request, fetch }) => {
             return json({ error: "Invalid or missing URL." }, { status: 400 });
         }
 
-        const isValid = await checkPageValidity(url, fetch);
-        if (!isValid) {
-            return json(
-                { error: "Invalid page or not a Ring page." },
-                { status: 400 },
-            );
+        let isValid = false;
+        for (let i = 0; i < 3; i++) {
+            isValid = await checkPageValidity(url, fetch);
+            if (isValid) break;
+            await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second before retrying
         }
 
         const res = await fetch(url);

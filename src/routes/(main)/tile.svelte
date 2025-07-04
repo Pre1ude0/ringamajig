@@ -39,7 +39,9 @@
     {:else if page && page.og}
         <div
             class="theme-color"
-            style="background-color: {page.themeColor || 'transparent'}"
+            style="background-color: {page.themeColor ||
+                'transparent'}; box-shadow: 0 0 7px {page.themeColor ||
+                'transparent'};"
         ></div>
         <div class="left" in:blur={{ duration: 500 }}>
             <div class="top">
@@ -85,6 +87,7 @@
             width: 5px;
             top: 0;
             left: 0;
+
             z-index: -1;
             border-top-left-radius: var(--border-radius);
             border-bottom-left-radius: var(--border-radius);
