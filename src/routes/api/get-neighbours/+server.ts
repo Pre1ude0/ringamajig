@@ -7,7 +7,7 @@ async function getNeighours(
 ): Promise<string[]> {
     let pages: Array<string> = await fetch("/pages.txt")
         .then((response) => response.text())
-        .then((data) => {
+        .then(async (data) => {
             const pages = data
                 .split("\n")
                 .map((line) => line.trim())
@@ -23,29 +23,27 @@ async function getNeighours(
             let previousIndex = pageIndex - 1;
             let nextIndex = pageIndex + 1;
 
-            while (previousIndex < 0) {
-                previousIndex += pages.length;
+            for (let i = previousIndex; i >= 0; i--) {
+                if (i < 0) {
+                    i = pages.length - 1;
+                }
+                if (await checkPageValidity(pages[i])) {
+                    previousIndex = i;
+                    break;
+                }
             }
 
-            while (nextIndex >= pages.length) {
-                nextIndex -= pages.length;
+            for (let i = nextIndex; i < pages.length; i++) {
+                if (i >= pages.length) {
+                    i = 0;
+                }
+                if (await checkPageValidity(pages[i])) {
+                    nextIndex = i;
+                    break;
+                }
             }
 
-            let previous = pages[previousIndex];
-            let next = pages[nextIndex];
-
-            while (!checkPageValidity(previous)) {
-                previousIndex =
-                    (previousIndex - 1 + pages.length) % pages.length;
-                previous = pages[previousIndex];
-            }
-
-            while (!checkPageValidity(next)) {
-                nextIndex = (nextIndex + 1) % pages.length;
-                next = pages[nextIndex];
-            }
-
-            return [previous, next];
+            return [pages[previousIndex], pages[nextIndex]];
         })
         .catch((error) => {
             console.error("Error fetching pages:", error);

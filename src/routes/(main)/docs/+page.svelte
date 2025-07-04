@@ -241,7 +241,7 @@
                     <a href="/1.png" target="_blank"
                         >Thats intended, not a bug</a
                     > - if you're not verified/approved yet, the iframe won't show
-                    any content, eliminating that akward phase of having a widget
+                    any content, eliminating that awkward phase of having a widget
                     on your site that doesn't work!
                 </p>
                 <p>
