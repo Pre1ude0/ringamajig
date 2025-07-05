@@ -23,6 +23,7 @@ export function getPageList(): Promise<Array<string>> {
                 let pages = pagesTxt
                     .split("\n")
                     .filter((page) => page.trim() !== "");
+
                 resolve(pages);
             })
             .catch((error) => {

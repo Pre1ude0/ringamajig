@@ -7,7 +7,7 @@
 <DarkToggle />
 <slot />
 <div style="flex-grow: 1"></div>
-<div class="container">
+<div class="bar">
     <p>
         Powered by <i class="nf nf-fa-heart" id="heart" title="love"></i> and
         <i class="nf nf-dev-svelte" id="svelte" title="svelteKit"></i>
@@ -21,7 +21,7 @@
 </div>
 
 <style>
-    .container {
+    .bar {
         display: flex;
         flex-direction: row;
         justify-content: center;

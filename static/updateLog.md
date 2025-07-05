@@ -1,3 +1,9 @@
+# Mini update 1.4.2
+- Wrote some guidelines for sites on the webring
+- General cleanup of the codebase (restructured some of the files and imports)
+
+---
+
 # Hotfix 1.4.1
 - Added a new method for validating sites because a certain *someone* ~~cough cough Natalie cough~~ had a dynamically generated site, that I hadn't accounted for previously
 - A very minor theme colour styling change in the main webring page

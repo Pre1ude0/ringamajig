@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-    <link rel="stylesheet" href="/gaydients.css" />
+    <link rel="stylesheet" href="/styles/gaydients.css" />
 </svelte:head>
 
 <div>
