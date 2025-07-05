@@ -2,7 +2,7 @@
     <h1>Webring guidelines</h1>
     <nl>
         <li>
-            Have an acessible web page (semi accessible on <a
+            Have an accessible web page (semi accessible on <a
                 href="https://webdesignerwall.com/tutorials/responsive-design-in-3-steps"
                 target="_blank">mobile</a
             > at the very least)
