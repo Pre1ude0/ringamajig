@@ -18,6 +18,8 @@
     <a href="/docs">Docs</a>
     <div class="divider dot"></div>
     <a href="/why">Why?</a>
+    <div class="divider dot"></div>
+    <a href="https://github.com/Pre1ude0/ringamajig" target="_blank">Source code</a>
 </div>
 
 <style>
