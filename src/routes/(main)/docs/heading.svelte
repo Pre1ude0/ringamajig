@@ -6,8 +6,7 @@
         </div>
         <div class="content">
             <p>
-                This page is currently <strong>very</strong> WIP - suggestions and
-                general feedback are very appreaciated!
+                Suggestions and general feedback are greatly appreciated, so don't be shy to share your thoughts about this project! 
             </p>
         </div>
     </note>
