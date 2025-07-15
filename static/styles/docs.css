@@ -199,6 +199,9 @@ table[data-type="query-parameters"] {
 }
 
 @media screen and (max-width: 600px) {
+    .pride-flag-tables {
+        margin-left: 0;
+    }
     .container {
         box-sizing: border-box;
         width: 100%;
