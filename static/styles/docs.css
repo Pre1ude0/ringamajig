@@ -201,6 +201,22 @@ table[data-type="query-parameters"] {
 @media screen and (max-width: 600px) {
     .pride-flag-tables {
         margin-left: 0;
+        flex-direction: column;
+        gap: 0;
+
+        table[data-type="pride-flags"] {
+            width: 100%;
+
+            &:first-child {
+                margin-bottom: 0;
+            }
+            &:nth-child(2) {
+                border-top: 1px solid var(--fg);
+                thead {
+                    display: none;
+                }
+            }
+        }
     }
     .container {
         box-sizing: border-box;
