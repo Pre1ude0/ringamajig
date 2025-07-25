@@ -33,7 +33,7 @@
         justify-content: center;
         align-items: center;
         height: fit-content;
-        padding: 10px;
+        padding: 30px 10px;
         background-color: black;
         color-scheme: dark;
 
