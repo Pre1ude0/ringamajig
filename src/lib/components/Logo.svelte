@@ -58,6 +58,9 @@
 
         &:hover {
             transform: var(--hover-transform);
+            @media screen and (max-width: 600px) {
+                transform: none !important;
+            }
         }
     }
 

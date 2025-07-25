@@ -8,7 +8,10 @@
     let logoTarget = "translateX(30px) scale(1.1) rotate(-15deg)";
     let descriptionTarget = "translateY(10px)";
 
+    let innerWidth = $state(0);
+
     function resetAnimation() {
+        if (innerWidth < 600) return;
         if (headerEl.classList.contains("sliced")) {
             headerEl.classList.remove("sliced");
             void headerEl.offsetWidth;
@@ -26,6 +29,8 @@
         descriptionTransformState = "none";
     }
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="parent" in:blur={{ duration: 200 }}>
     <div class="child">
@@ -98,6 +103,11 @@
     h1:hover {
         -webkit-text-fill-color: transparent;
         transform: skewX(-10deg) scale(1.1);
+
+        @media screen and (max-width: 600px) {
+            transform: none !important;
+            animation: none !important;
+        }
     }
 
     h2 {
