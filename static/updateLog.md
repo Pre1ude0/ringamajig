@@ -1,3 +1,10 @@
+
+# Mini update 1.4.3
+- Fixed some issues with the mobile view on the docs page and the footer
+- Made the site more accessible via keyboard
+
+---
+
 # Mini update 1.4.2
 - Wrote some guidelines for sites on the webring
 - General cleanup of the codebase (restructured some of the files and imports)

@@ -13,13 +13,17 @@
         <i class="nf nf-dev-svelte" id="svelte" title="svelteKit"></i>
     </p>
     <div class="divider line"></div>
-    <a href="/docs#how-to-join">How to join</a>
-    <div class="divider dot"></div>
-    <a href="/docs">Docs</a>
-    <div class="divider dot"></div>
-    <a href="/why">Why?</a>
-    <div class="divider dot"></div>
-    <a href="https://github.com/Pre1ude0/ringamajig" target="_blank">Source code</a>
+    <div class="links">
+        <a href="/docs#how-to-join">How to join</a>
+        <div class="divider dot"></div>
+        <a href="/docs">Docs</a>
+        <div class="divider dot"></div>
+        <a href="/why">Why?</a>
+        <div class="divider dot"></div>
+        <a href="https://github.com/Pre1ude0/ringamajig" target="_blank"
+            >Source code</a
+        >
+    </div>
 </div>
 
 <style>
@@ -36,11 +40,21 @@
         p {
             text-align: center;
             color: white;
+            text-indent: 0;
+            margin: 0;
         }
 
         a {
             text-align: center;
         }
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
     }
 
     .divider {
@@ -64,5 +78,19 @@
 
     #heart {
         color: #ff246d;
+    }
+
+    @media screen and (max-width: 600px) {
+        .bar {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+        .divider.line {
+            width: 40px;
+            height: 1px;
+            margin: 10px 0;
+        }
     }
 </style>
