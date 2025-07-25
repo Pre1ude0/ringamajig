@@ -112,7 +112,8 @@
         border: none;
         transition: color 0.3s ease-out;
 
-        &:hover {
+        &:hover,
+        &:focus-visible {
             span {
                 transition:
                     opacity 0.15s ease-in-out,

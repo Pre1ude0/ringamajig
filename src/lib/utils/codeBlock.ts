@@ -2,10 +2,12 @@ export function resetCopyButton(this: HTMLElement) {
     const button = this.querySelector(".copy-button");
     if (button) {
         setTimeout(() => {
-            this.addEventListener("mouseleave", () => {
-                setTimeout(() => {
-                    button.innerHTML = "<i class='nf nf-oct-copy'></i>";
-                }, 150);
+            ["mouseleave", "focusout"].forEach((event) => {
+                this.addEventListener(event, () => {
+                    setTimeout(() => {
+                        button.innerHTML = "<i class='nf nf-oct-copy'></i>";
+                    }, 150);
+                });
             });
         }, 2000);
     }
@@ -16,7 +18,21 @@ export function addCopyButtons() {
         const button = document.createElement("button");
         button.innerHTML = "<i class='nf nf-oct-copy'></i>";
         button.classList.add("copy-button");
+
+        button.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                button.classList.add("active");
+            }
+        });
+        button.addEventListener("keyup", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                button.classList.remove("active");
+            }
+        });
+
+        button.setAttribute("aria-label", "Copy code to clipboard");
         button.addEventListener("click", () => {
+            console.log("Copying code to clipboard");
             navigator.clipboard
                 .writeText(pre.textContent || "")
                 .then(() => {
