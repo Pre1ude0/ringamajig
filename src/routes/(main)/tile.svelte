@@ -2,6 +2,7 @@
     import { getOpenGraphData, trunicate } from "$lib/utils/pages";
     import { onMount } from "svelte";
     import { fly, blur } from "svelte/transition";
+    import { goto } from "$app/navigation";
 
     let { index, pageName } = $props();
     let page: any = $state({});
@@ -44,7 +45,6 @@
                 <a
                     href={page.og["og:url"]}
                     target="_blank"
-                    rel="noopener noreferrer"
                     class="page-title"
                     draggable="false"
                     title={trunicate(page.og["og:title"], 50)}
@@ -52,14 +52,14 @@
                     {page.og["og:title"]}
                 </a>
             </div>
-            <a
-                href={page.og["og:url"]}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="url"
-            >
-                {page.og["og:site_name"]}
-            </a>
+            <div class="url">
+                {#if page.favicon}
+                    <img src={page.favicon} alt="Site favicon" />
+                {/if}
+                <a href={page.og["og:url"]} target="_blank">
+                    {page.og["og:site_name"]}
+                </a>
+            </div>
             {#if page.og["og:description"]}
                 <p
                     class="description"
@@ -70,7 +70,20 @@
             {/if}
         </div>
         <div class="right" in:blur={{ duration: 300 }}>
-            <img src={page.og["og:image"]} alt="Site thumbnail" />
+            <img
+                src={page.og["og:image"]}
+                alt="Site thumbnail"
+                class="thumbnail"
+            />
+            {#if page.pageButton}
+                <a href={page.og["og:url"]} target="_blank">
+                    <img
+                        src={page.pageButton}
+                        class="blankie"
+                        alt="Site 88x31 button"
+                    />
+                </a>
+            {/if}
         </div>
     {/if}
 </div>
@@ -138,6 +151,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
+                gap: 10px;
             }
 
             width: calc(70% - 20px);
@@ -155,7 +169,6 @@
                 text-overflow: ellipsis;
                 line-clamp: 1;
                 overflow: hidden;
-                width: 100%;
 
                 transition: color 0.3s ease-in-out;
 
@@ -184,6 +197,16 @@
 
             .url {
                 font-size: 0.9em;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 5px;
+
+                img {
+                    aspect-ratio: 1;
+                    height: 20px;
+                    vertical-align: middle;
+                }
             }
 
             .description {
@@ -213,10 +236,46 @@
             max-width: 30%;
             z-index: 1;
 
-            img {
+            &:hover {
+                .blankie {
+                    opacity: 0.2;
+                }
+            }
+
+            .thumbnail {
                 object-fit: cover;
                 height: 100%;
                 width: auto;
+                max-width: 150px;
+                max-height: 150px;
+                border-radius: var(--border-radius);
+            }
+
+            a {
+                position: absolute;
+                bottom: -5px;
+                right: -5px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+
+                &:after {
+                    content: none;
+                }
+
+                .blankie {
+                    aspect-ratio: 88 / 31;
+                    border-radius: 0;
+                    height: 31px;
+                    width: 88px;
+                    object-fit: cover;
+                    box-shadow: 0 0 5px var(--bg);
+                    transition: opacity 0.15s ease-in-out;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
             }
         }
     }
@@ -224,12 +283,6 @@
     /* li:hover {
             box-shadow: 0 0 10px var(--hover-shadow);
         } */
-
-    img {
-        max-width: 150px;
-        max-height: 150px;
-        border-radius: var(--border-radius);
-    }
 
     @keyframes loading {
         0% {

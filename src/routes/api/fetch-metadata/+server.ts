@@ -41,15 +41,39 @@ export const POST = async ({ request, fetch }) => {
             og["og:site_name"] = url.replace(/^https?:\/\//, "");
         }
 
-        const themeColor =
-            $('meta[name="theme-color"]').attr("content") || null;
+        const metaVarsToGet = ["theme-color", "pride-flag", "page-button"];
+        const meta: Record<string, string | null> = {};
 
-        const prideFlag = $('meta[name="pride-flag"]').attr("content") || null;
+        for (const name of metaVarsToGet) {
+            meta[name] = $(`meta[name="${name}"]`).attr("content") || null;
+        }
+
+        let favicon: string | null = null;
+        const faviconHref = $("link[rel='icon']").attr("href");
+        if (faviconHref) {
+            if (/^(https?:)?\/\//.test(faviconHref)) {
+                favicon = faviconHref;
+            } else {
+                const baseUrl = url.replace(/\/+$/, "");
+                favicon = `${baseUrl}${faviconHref.startsWith("/") ? "" : "/"}${faviconHref}`;
+            }
+        }
+
+        if (!favicon) {
+            const strippedUrl = url.replace(/\/+$/, "");
+            let staticIcon = await fetch(`${strippedUrl}/favicon.ico`);
+            if (staticIcon.ok) {
+                favicon = `${strippedUrl}/favicon.ico`;
+            }
+            console.log("Favicon URL:", favicon);
+        }
 
         return json({
             og,
-            themeColor,
-            prideFlag,
+            themeColor: meta["theme-color"],
+            prideFlag: meta["pride-flag"],
+            pageButton: meta["page-button"],
+            favicon,
         });
     } catch (err) {
         console.error(err);
