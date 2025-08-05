@@ -1,4 +1,10 @@
 
+# Version 1.5
+- Introduced a new `page-button` meta tag variable to provide a 88x31px button image for your site card
+- Made the appropriate page favicons appear next to the page url on site cards
+
+---
+
 # Mini update 1.4.3
 - Fixed some issues with the mobile view on the docs page and the footer
 - Made the site more accessible via keyboard
@@ -19,18 +25,18 @@
 
 # Version 1.4
 - Validity checker patch (it was very broken)
-- New `animdur` query parameter to change the appearing animation duration of the iframe
+- Added a new optional `animdur` query parameter to the iframe source that lets you change the appearing animation duration of the iframe
 
 ---
 
 # Version 1.3
-- Customizable iframe index pride flag colors via meta tags (feat.)
+- Introduced customizable iframe index pride flag colors via meta tags (feat.)
 - Redid theme colors for page tiles
 
 ---
 
 # Version 1.2
-- Made a site validity checker that makes sure your site has the webring widget
+- Created a site validity checker that makes sure your site has the webring widget
 - Implemented the validity checker into a multitude of parts of the webring
 
 ---
