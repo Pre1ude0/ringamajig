@@ -65,7 +65,6 @@ export const POST = async ({ request, fetch }) => {
             if (staticIcon.ok) {
                 favicon = `${strippedUrl}/favicon.ico`;
             }
-            console.log("Favicon URL:", favicon);
         }
 
         return json({

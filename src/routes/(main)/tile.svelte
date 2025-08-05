@@ -371,12 +371,18 @@
             width: 100%;
             margin-top: 10px;
 
-            img {
+            .thumbnail {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 200px !important;
+                object-fit: cover;
+            }
+
+            .blankie {
                 width: 100% !important;
                 max-width: 100%;
-                height: 200px !important;
-
-                object-fit: cover;
+                height: auto !important;
+                aspect-ratio: auto;
             }
         }
     }
