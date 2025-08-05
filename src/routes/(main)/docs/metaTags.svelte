@@ -101,7 +101,7 @@
                 >
             </tr>
             <tr>
-                <td><code>page-button</code></td>
+                <td><code>site-button</code></td>
                 <td>name</td>
                 <td
                     >An <a

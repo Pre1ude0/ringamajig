@@ -41,7 +41,7 @@ export const POST = async ({ request, fetch }) => {
             og["og:site_name"] = url.replace(/^https?:\/\//, "");
         }
 
-        const metaVarsToGet = ["theme-color", "pride-flag", "page-button"];
+        const metaVarsToGet = ["theme-color", "pride-flag", "site-button"];
         const meta: Record<string, string | null> = {};
 
         for (const name of metaVarsToGet) {
@@ -72,7 +72,7 @@ export const POST = async ({ request, fetch }) => {
             og,
             themeColor: meta["theme-color"],
             prideFlag: meta["pride-flag"],
-            pageButton: meta["page-button"],
+            siteButton: meta["site-button"],
             favicon,
         });
     } catch (err) {

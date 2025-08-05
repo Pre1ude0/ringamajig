@@ -1,6 +1,6 @@
 
 # Version 1.5
-- Introduced a new `page-button` meta tag variable to provide a 88x31px button image for your site card
+- Introduced a new `site-button` meta tag variable to provide a 88x31px button image for your site card
 - Made the appropriate page favicons appear next to the page url on site cards
 
 ---

@@ -75,10 +75,10 @@
                 alt="Site thumbnail"
                 class="thumbnail"
             />
-            {#if page.pageButton}
+            {#if page.siteButton}
                 <a href={page.og["og:url"]} target="_blank">
                     <img
-                        src={page.pageButton}
+                        src={page.siteButton}
                         class="blankie"
                         alt="Site 88x31 button"
                     />
