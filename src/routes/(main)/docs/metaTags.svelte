@@ -101,6 +101,20 @@
                 >
             </tr>
             <tr>
+                <td><code>page-button</code></td>
+                <td>name</td>
+                <td
+                    >An <a
+                        href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls"
+                        target="_blank">absolute URL</a
+                    >
+                    to your sites
+                    <a href="https://indieweb.org/88x31" target="_blank"
+                        >88x31 button</a
+                    > image</td
+                >
+            </tr>
+            <tr>
                 <td
                     ><code
                         ><a
@@ -150,15 +164,88 @@
     <h3>Example:</h3>
     <p>These are the meta tags of the ring-amajig webring</p>
     <pre class="prettyprint lang-html">
-            &lt!-- Required tags --&gt
-            &ltmeta property="og:title" content="Ring-amajig" /&gt
-            &ltmeta property="og:description" content="Yet another webring on the www" /&gt
-            &ltmeta property="og:image" content="https://ring.pre1ude.dev/favicon.png" /&gt
-            &ltmeta property="og:url" content="https://ring.pre1ude.dev" /&gt
+        &lt!-- Required tags --&gt
+        &ltmeta property="og:title" content="Ring-amajig" /&gt
+        &ltmeta property="og:description" content="Yet another webring on the www" /&gt
+        &ltmeta property="og:image" content="https://ring.pre1ude.dev/favicon.png" /&gt
+        &ltmeta property="og:url" content="https://ring.pre1ude.dev" /&gt
 
-            &lt!-- Optional tags --&gt
-            &ltmeta property="og:site_name" content="ring.pre1ude.dev" /&gt
-            &ltmeta name="theme-color" content="#ffffff" /&gt
-            &ltmeta name="pride-flag" content="progress-pride" /&gt
-        </pre>
+        &lt!-- Optional tags --&gt
+        &ltmeta property="og:site_name" content="ring.pre1ude.dev" /&gt
+        &ltmeta name="theme-color" content="#ffffff" /&gt
+        &ltmeta name="pride-flag" content="progress-pride" /&gt
+    </pre>
+    <note data-type="info">
+        <div class="title">
+            <i class="nf nf-fa-circle_info"></i> favicon / under the hood
+        </div>
+        <div class="content">
+            <p>
+                The <a
+                    href="https://developer.mozilla.org/en-US/docs/Glossary/Favicon"
+                    target="_blank">favicon</a
+                > of your site will also show up beside the link on your webring
+                site tile
+            </p>
+            <p>
+                You can define this <a
+                    href="https://developer.mozilla.org/en-US/docs/Glossary/Favicon"
+                    target="_blank">favicon</a
+                >
+                of your site by adding a link tag to the head of your site
+            </p>
+            <pre class="prettyprint lang-html">
+&ltlink rel="icon" href="path/to/your/favicon.png" /&gt
+</pre>
+            <p>
+                or by putting a <code>favicon.ico</code> file in the root of your
+                static site as so
+            </p>
+            <pre class="prettyprint">
+Site/
+├── index.html
+├── styles.css
+├── script.js
+└── <span class="highlight">favicon.ico</span>
+</pre>
+            <p>
+                or if you're hosting the site dynamically with a web framework
+                like <code>node.js</code>, <code>react</code> or
+                <code>flask</code>
+            </p>
+            <pre class="prettyprint">
+App/
+├── main.py <span class="slash">/</span> main.js
+├── templates <span class="slash">/</span> views
+│   └─ index.html
+└── static <span class="slash">/</span> public
+    └─ <span class="highlight">favicon.ico</span>
+</pre>
+        </div>
+    </note>
 </div>
+
+<style>
+    .highlight :global(span.pln) {
+        color: light-dark(#006400, #32cd32) !important;
+        font-weight: bold;
+    }
+
+    .slash :global(span.pun) {
+        color: light-dark(#808080, #a9a9a9) !important;
+    }
+
+    note {
+        pre {
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin: 0.5em;
+
+            :global(span.typ),
+            :global(span.kwd) {
+                color: inherit;
+                font-weight: inherit;
+            }
+        }
+    }
+</style>
