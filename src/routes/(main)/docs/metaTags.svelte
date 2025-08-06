@@ -195,7 +195,7 @@
                 of your site by adding a link tag to the head of your site
             </p>
             <pre class="prettyprint lang-html">
-&ltlink rel="icon" href="path/to/your/favicon.png" /&gt
+&ltlink rel="icon" href="path/to/your/favicon.ico" /&gt
 </pre>
             <p>
                 or by putting a <code>favicon.ico</code> file in the root of your
