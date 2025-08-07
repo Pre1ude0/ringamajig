@@ -15,6 +15,8 @@ export function addAnchors(node: HTMLElement) {
             highlightActiveAnchor();
         });
     });
+
+    window.addEventListener("hashchange", highlightActiveAnchor);
 }
 
 export function highlightActiveAnchor() {
