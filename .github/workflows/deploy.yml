@@ -22,6 +22,7 @@ jobs:
                   script: |
                       set -ex
                       cd /srv/ringamajig
+                      git reset --hard
                       git pull origin master
                       npm install
                       npm run build
