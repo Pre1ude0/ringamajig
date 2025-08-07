@@ -7,6 +7,17 @@ export async function getOpenGraphData(url: string): Promise<any> {
         },
     });
 
+    if (!response.ok) {
+        if (response.status === 400) {
+            throw new Error("Invalid or missing page.");
+        } else if (response.status === 404) {
+            throw new Error("Page not found.");
+        } else if (response.status === 406) {
+            throw new Error("Page does not contain required metadata.");
+        } else if (response.status === 500) {
+            throw new Error("Internal server error.");
+        }
+    }
     return await response.json();
 }
 

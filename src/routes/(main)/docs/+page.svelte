@@ -6,13 +6,14 @@
     import Footer from "./footer.svelte";
     import Iframe from "./iframe.svelte";
     import PrideFlags from "./prideFlags.svelte";
+    import TilePreview from "./tilePreview.svelte";
     import { addCopyButtons } from "$lib/utils/codeBlock";
 
     onMount(() => {
         if (window.PR) {
             window.PR.prettyPrint();
         }
-        addCopyButtons();
+        addCopyButtons(document.body);
     });
 </script>
 
@@ -29,6 +30,7 @@
     <Heading />
     <Guidelines />
     <MetaTags />
+    <TilePreview />
     <Iframe />
     <Footer />
     <PrideFlags />

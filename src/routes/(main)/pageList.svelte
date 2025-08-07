@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getPageList } from "$lib/utils/pages";
     import { onMount } from "svelte";
-    import Tile from "./tile.svelte";
+    import Tile from "$lib/components/tile.svelte";
 
     let pageList: Array<string> = $state([]);
     $inspect(pageList);
@@ -21,7 +21,7 @@
 
 <div>
     {#each pageList as url, i}
-        <Tile index={i} pageName={url} />
+        <Tile index={i} pageName={url} pageData={null} />
     {/each}
 </div>
 

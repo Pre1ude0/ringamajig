@@ -13,8 +13,8 @@ export function resetCopyButton(this: HTMLElement) {
     }
 }
 
-export function addCopyButtons() {
-    document.querySelectorAll("pre").forEach((pre) => {
+export function addCopyButtons(parent: HTMLElement) {
+    parent.querySelectorAll("pre").forEach((pre) => {
         const button = document.createElement("button");
         button.innerHTML = "<i class='nf nf-oct-copy'></i>";
         button.classList.add("copy-button");

@@ -2,16 +2,19 @@
     import { getOpenGraphData, trunicate } from "$lib/utils/pages";
     import { onMount } from "svelte";
     import { fly, blur } from "svelte/transition";
-    import { goto } from "$app/navigation";
 
-    let { index, pageName } = $props();
-    let page: any = $state({});
+    let { index, pageName, pageData } = $props();
+    let page: any = $derived(pageData || {});
     $inspect(page);
 
     onMount(async () => {
+        if (pageData) return;
+
         page = await getOpenGraphData(pageName);
         if (page.error) {
-            console.warn(`No Open Graph data found for page: ${index}`);
+            console.warn(
+                `No/Insuficcient Open Graph data found for page: ${index}`,
+            );
             page = {};
         }
     });
@@ -36,29 +39,40 @@
     {:else if page && page.og}
         <div
             class="theme-color"
-            style="background-color: {page.themeColor ||
-                'transparent'}; box-shadow: 0 0 7px {page.themeColor ||
-                'transparent'};"
+            style="
+                background-color: {page.themeColor || 'transparent'};
+                box-shadow: 0 0 7px {page.themeColor || 'transparent'};
+            "
         ></div>
         <div class="left" in:blur={{ duration: 500 }}>
             <div class="top">
-                <a
-                    href={page.og["og:url"]}
-                    target="_blank"
-                    class="page-title"
-                    draggable="false"
-                    title={trunicate(page.og["og:title"], 50)}
-                >
-                    {page.og["og:title"]}
-                </a>
+                {#if page.og["og:title"]}
+                    <a
+                        href={page.og["og:url"] ? page.og["og:url"] : null}
+                        target="_blank"
+                        class="page-title"
+                        draggable="false"
+                        title={trunicate(page.og["og:title"], 50)}
+                    >
+                        {page.og["og:title"]}
+                    </a>
+                {/if}
             </div>
             <div class="url">
                 {#if page.favicon}
                     <img src={page.favicon} alt="Site favicon" />
                 {/if}
-                <a href={page.og["og:url"]} target="_blank">
-                    {page.og["og:site_name"]}
-                </a>
+                {#if page.og["og:url"]}
+                    <a href={page.og["og:url"]} target="_blank">
+                        {#if page.og["og:site_name"]}
+                            {page.og["og:site_name"]}
+                        {:else}
+                            {page.og["og:url"]
+                                .replace(/^(https?:\/\/)?(www\.)?/i, "")
+                                .replace(/\/$/, "")}
+                        {/if}
+                    </a>
+                {/if}
             </div>
             {#if page.og["og:description"]}
                 <p
@@ -70,11 +84,13 @@
             {/if}
         </div>
         <div class="right" in:blur={{ duration: 300 }}>
-            <img
-                src={page.og["og:image"]}
-                alt="Site thumbnail"
-                class="thumbnail"
-            />
+            {#if page.og["og:image"]}
+                <img
+                    src={page.og["og:image"]}
+                    alt="Site thumbnail"
+                    class="thumbnail"
+                />
+            {/if}
             {#if page.siteButton}
                 <a href={page.og["og:url"]} target="_blank">
                     <img
@@ -216,6 +232,7 @@
                 overflow: hidden;
                 line-height: 1.5;
                 text-overflow: ellipsis;
+                text-indent: 0;
 
                 display: -webkit-box;
                 line-clamp: 2;
@@ -270,7 +287,9 @@
                     width: 88px;
                     object-fit: cover;
                     box-shadow: 0 0 5px var(--bg);
-                    transition: opacity 0.15s ease-in-out;
+                    transition:
+                        opacity 0.15s ease-in-out,
+                        box-shadow 0.3s ease-in-out;
 
                     &:hover {
                         opacity: 1;

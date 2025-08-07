@@ -10,11 +10,13 @@ export const POST = async ({ request, fetch }) => {
             return json({ error: "Invalid or missing URL." }, { status: 400 });
         }
 
-        let isValid = false;
-        for (let i = 0; i < 3; i++) {
-            isValid = await checkPageValidity(url, fetch);
-            if (isValid) break;
-            await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+        if (!(await checkPageValidity(url, fetch))) {
+            return json(
+                {
+                    error: `Page invalid: ${url}`,
+                },
+                { status: 400 },
+            );
         }
 
         const res = await fetch(url);
@@ -64,6 +66,23 @@ export const POST = async ({ request, fetch }) => {
             let staticIcon = await fetch(`${strippedUrl}/favicon.ico`);
             if (staticIcon.ok) {
                 favicon = `${strippedUrl}/favicon.ico`;
+            }
+        }
+
+        const requiredFields = [
+            "og:title",
+            "og:description",
+            "og:image",
+            "og:url",
+        ];
+        for (const field of requiredFields) {
+            if (!og[field]) {
+                return json(
+                    {
+                        error: `Page does not contain required metadata: ${field}`,
+                    },
+                    { status: 406 },
+                );
             }
         }
 
