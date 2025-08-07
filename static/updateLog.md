@@ -1,3 +1,8 @@
+# Hotfix 1.6.1
+- Fixed some issues with the mobile view of the preview builder
+
+---
+
 # Version 1.6
 - Added a tile [preview/builder tool](/docs#tile-preview-builder) to the docs page
 - Added heading anchors to the docs page

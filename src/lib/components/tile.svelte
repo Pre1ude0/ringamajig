@@ -362,7 +362,7 @@
     @media screen and (max-width: 600px) {
         .tile:before {
             background-size: 100% 40%;
-            background-position-y: 53%;
+            background-position-y: 50%;
             top: 0;
             filter: blur(3px);
             bottom: 50%;
@@ -379,6 +379,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 10px;
+            min-height: 300px;
         }
 
         .left {

@@ -209,4 +209,25 @@
             resize: none;
         }
     }
+
+    @media screen and (max-width: 600px) {
+        .tile-preview {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .left {
+            width: 100%;
+        }
+
+        .right {
+            width: 100%;
+
+            pre {
+                margin: 0 1em 2em 1em !important;
+                box-sizing: border-box;
+            }
+        }
+    }
 </style>
