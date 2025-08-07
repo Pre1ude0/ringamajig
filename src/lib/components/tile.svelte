@@ -93,7 +93,10 @@
                 />
             {/if}
             {#if page.siteButton}
-                <a href={page.og["og:url"]} target="_blank">
+                <a
+                    href={page.og["og:url"] ? page.og["og:url"] : null}
+                    target="_blank"
+                >
                     <img
                         src={page.siteButton}
                         class="blankie"

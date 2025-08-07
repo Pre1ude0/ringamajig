@@ -27,7 +27,8 @@
         </h2>
 
         <p in:fly={{ y: 150, duration: 500, delay: 300 }}>
-            Well since summer had started I had a lot more free time on my hands
+            Well, since summer had started, I had a lot more free time on my
+            hands
         </p>
         <p in:fly={{ y: 150, duration: 500, delay: 400 }}>
             And what better way to relax from school than to learn something new
@@ -52,9 +53,18 @@
             So if you're reading this on <a
                 href={currentPageUrl}
                 target="_blank">{strippedUrl}</a
-            >, that means I succeeded and have a silly little webring of my own!
-            If this message has inspired you to join my webring, please do by
-            checking out the <a href="/docs#how-to-join">How to join</a> page first!
+            >, that means I've succeeded and now have a silly little webring of
+            my own! If this message has inspired you to join my webring, please
+            do so by checking out the
+            <a href="/docs#how-to-join">How to Join</a> page first!
+        </p>
+        <p
+            style="text-align: right; font-size: 1.1em; margin-top: 2em; margin-right: 2em;"
+            in:blur={{ duration: 500, delay: 800 }}
+        >
+            - <a href="https://pre1ude.dev" target="_blank"
+                >Laura (the developer)</a
+            >, July 2025
         </p>
     </div>
 </div>
