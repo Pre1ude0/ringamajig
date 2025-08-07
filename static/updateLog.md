@@ -1,3 +1,8 @@
+# Version 1.6
+- Added a tile [preview/builder tool](/docs#tile-preview-builder) to the docs page
+- Added heading anchors to the docs page
+
+---
 
 # Version 1.5
 - Introduced a new `site-button` meta tag variable to provide a 88x31px button image for your site card

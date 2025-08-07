@@ -9,7 +9,7 @@
     import PrideFlags from "./prideFlags.svelte";
     import TilePreview from "./tilePreview.svelte";
     import { addCopyButtons } from "$lib/utils/codeBlock";
-    import { addAnchors } from "$lib/utils/anchors";
+    import { addAnchors, highlightActiveAnchor } from "$lib/utils/anchors";
 
     onMount(() => {
         if (window.PR) {
@@ -17,6 +17,7 @@
         }
         addCopyButtons(document.body);
         addAnchors(document.body);
+        highlightActiveAnchor();
     });
 </script>
 

@@ -12,6 +12,20 @@ export function addAnchors(node: HTMLElement) {
 
         header.addEventListener("click", () => {
             window.location.hash = slug;
+            highlightActiveAnchor();
         });
+    });
+}
+
+export function highlightActiveAnchor() {
+    const anchors = document.querySelectorAll("h1[id], h2[id], h3[id]");
+    const hash = window.location.hash;
+
+    anchors.forEach((anchor) => {
+        if (anchor.id === hash.slice(1)) {
+            anchor.classList.add("anchored");
+        } else {
+            anchor.classList.remove("anchored");
+        }
     });
 }

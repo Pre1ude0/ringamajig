@@ -18,6 +18,7 @@ h2,
 h3 {
     cursor: pointer;
     position: relative;
+
     &:before {
         opacity: 0;
         content: "#";
@@ -26,10 +27,25 @@ h3 {
         top: 0.2em;
         left: -0.9em;
         padding-right: 0.2em;
-        color: var(--link);
+        color: var(--fg);
+        transition:
+            color 0.3s ease-in-out,
+            transform 0.15s ease-in-out;
     }
-    &:hover:before {
+    &:hover::before {
+        opacity: 0.8;
+    }
+
+    &:before:hover {
+        color: var(--link);
         opacity: 1;
+    }
+    &:active::before {
+        transition: none !important;
+    }
+    &.anchored::before {
+        opacity: 1;
+        color: var(--link);
     }
 }
 
