@@ -14,7 +14,7 @@
     </p>
     <div class="divider line"></div>
     <div class="links">
-        <a href="/docs#how-to-join">How to join</a>
+        <a href="/docs#how-do-i-join-you-supposedly">How to join</a>
         <div class="divider dot"></div>
         <a href="/docs">Docs</a>
         <div class="divider dot"></div>

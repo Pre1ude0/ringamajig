@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { beforeNavigate } from "$app/navigation";
     import Heading from "./heading.svelte";
     import Guidelines from "./guidelines.svelte";
     import MetaTags from "./metaTags.svelte";
@@ -8,12 +9,14 @@
     import PrideFlags from "./prideFlags.svelte";
     import TilePreview from "./tilePreview.svelte";
     import { addCopyButtons } from "$lib/utils/codeBlock";
+    import { addAnchors } from "$lib/utils/anchors";
 
     onMount(() => {
         if (window.PR) {
             window.PR.prettyPrint();
         }
         addCopyButtons(document.body);
+        addAnchors(document.body);
     });
 </script>
 

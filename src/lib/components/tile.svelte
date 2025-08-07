@@ -5,6 +5,7 @@
 
     let { index, pageName, pageData } = $props();
     let page: any = $derived(pageData || {});
+    let delay: number = $derived(Number(index) ? index * 100 : 0);
     $inspect(page);
 
     onMount(async () => {
@@ -22,7 +23,7 @@
 
 <div
     class="tile {!page || !page.og ? 'loading' : ''} "
-    in:fly={{ y: 20, duration: 300, delay: index * 100 }}
+    in:fly={{ y: 20, duration: 300, delay }}
     style="--index: '{index}'; --pride-flag: var(--{page.prideFlag});"
 >
     {#if !page || !page.og}

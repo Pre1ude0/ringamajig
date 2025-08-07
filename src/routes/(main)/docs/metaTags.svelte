@@ -1,7 +1,7 @@
 <div class="container">
-    <h2 id="how-to-join">
-        "How do I join?" <span style="font-size: 0.5em;">- You, supposedly</span
-        >
+    <h2>
+        "How do I join?"
+        <span style="font-size: 0.5em;">- You, supposedly</span>
     </h2>
     <p>
         Fret not my fellow indie dev enthusiast! I have written this guide to my
