@@ -1,3 +1,10 @@
+# Version 1.6.3
+- Fixed the site tile builder outputting false names for meta variables ~~this is why testers exist but wtv~~
+- Fixed some goofy sticky placement with the notifications on some pages
+- Fixed the notifications not showing up due to falty environment variables
+
+---
+
 # Version 1.6.2
 - Made a notification system for the webring in case there is a need
 - Fixed an issue where the site card builder wouldn't output any code
@@ -21,13 +28,13 @@
 
 ---
 
-# Mini update 1.4.3
+# Version 1.4.3
 - Fixed some issues with the mobile view on the docs page and the footer
 - Made the site more accessible via keyboard
 
 ---
 
-# Mini update 1.4.2
+# Version 1.4.2
 - Wrote some guidelines for sites on the webring
 - General cleanup of the codebase (restructured some of the files and imports)
 
