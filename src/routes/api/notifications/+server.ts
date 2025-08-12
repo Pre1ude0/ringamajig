@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { parse } from "csv-parse/sync";
 
-const CACHE_FILE = path.join(process.cwd(), "notifications-cache.json");
+const cachePath = path.join(process.cwd(), "tmp", "notifications-cache.json");
 const CSV_URL = `https://docs.google.com/spreadsheets/d/${import.meta.env.VITE_GOOGLE_SHEET_ID}/export?format=csv`;
 
 let lastFetched = 0;

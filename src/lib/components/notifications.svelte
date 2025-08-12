@@ -56,7 +56,7 @@
         top: 50px;
         bottom: 0;
         right: 10px;
-        height: 100%;
+        height: calc(100% - 50px);
         flex-direction: column;
     }
 
