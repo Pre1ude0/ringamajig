@@ -94,7 +94,7 @@
     }
 
     .box {
-        position: absolute;
+        position: static;
         bottom: 10vh;
         left: 10px;
         z-index: 1000;
