@@ -52,6 +52,7 @@
         display: flex;
         position: absolute;
         top: 50px;
+        bottom: 0;
         right: 10px;
         height: 100%;
         flex-direction: column;
@@ -63,10 +64,7 @@
         display: flex;
         flex-direction: column;
         gap: 2px;
-
-        max-height: 90vh;
         padding: 10px;
-
         z-index: 100;
     }
 

@@ -47,5 +47,7 @@ export function applyPrettyPrint(
     codePreviewContainer.innerText = code;
     addCopyButtons(codePreviewContainer.parentElement!);
     codePreviewContainer.classList.remove("prettyprinted");
-    window.PR!.prettyPrint();
+    if (window.PR) {
+        window.PR.prettyPrint();
+    }
 }

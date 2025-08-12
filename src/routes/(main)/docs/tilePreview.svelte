@@ -31,9 +31,9 @@
                 : "",
             "og:site_name": form.site_name || "",
         },
-        siteButton: form.siteButton || "",
-        themeColor: form.themeColor || "",
-        prideFlag: form.prideFlag || "",
+        "site-button": form.siteButton || "",
+        "theme-color": form.themeColor || "",
+        "pride-flag": form.prideFlag || "",
         favicon: form.favicon || "",
     });
     const requiredFields = ["og:title", "og:description", "og:image", "og:url"];

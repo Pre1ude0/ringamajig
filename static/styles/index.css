@@ -45,6 +45,12 @@ body {
     line-height: 1.5;
 }
 
+html,
+body {
+    height: fit-content;
+    position: relative;
+}
+
 code {
     font-family: "Fira Code", monospace;
     font-size: 0.9em;
