@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "server-moving-notice",
+    "title": "Server downtime notice aug. 16",
+    "message": "The webring will be down for a couple hours this sunday since I'm moving the server via plane to a new location",
+    "type": "warning"
+  }
+]

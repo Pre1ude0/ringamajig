@@ -1,11 +1,9 @@
 import fs from "fs";
 import path from "path";
-import dotenv from "dotenv";
 import { parse } from "csv-parse/sync";
-dotenv.config();
 
 const CACHE_FILE = path.join(process.cwd(), "notifications-cache.json");
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEET_ID}/export?format=csv`;
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${import.meta.env.VITE_GOOGLE_SHEET_ID}/export?format=csv`;
 
 let lastFetched = 0;
 let cacheData: any = [];

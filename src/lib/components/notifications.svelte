@@ -76,6 +76,7 @@
         margin: 10px 0;
         border-radius: 5px;
         color: var(--fg);
+        width: 320px;
 
         display: flex;
         flex-direction: row;
