@@ -4,5 +4,17 @@
     "title": "Server downtime notice aug. 16",
     "message": "The webring will be down for a couple hours this sunday since I'm moving the server via plane to a new location",
     "type": "warning"
+  },
+  {
+    "id": "version-1.6.3",
+    "title": "Version 1.6.3 now live!",
+    "message": "",
+    "type": "info"
+  },
+  {
+    "id": "test",
+    "title": "notification with really really long title like really long title like this long title",
+    "message": "testing something rn ignore this :3",
+    "type": "success"
   }
 ]

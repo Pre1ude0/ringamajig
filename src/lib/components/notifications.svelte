@@ -27,7 +27,7 @@
                 >
                     <i class="nf nf-fa-times"></i>
                 </button>
-                <div class="left">
+                <div class="top">
                     {#if n.type === "warning"}
                         <i class="nf nf-fa-exclamation_triangle"></i>
                     {:else if n.type === "info"}
@@ -37,11 +37,13 @@
                     {:else}
                         <i class="nf nf-fa-bell"></i>
                     {/if}
-                </div>
-                <div class="right">
                     <h3>{n.title}</h3>
-                    <p>{n.message}</p>
                 </div>
+                {#if n.message && n.message !== ""}
+                    <div class="bottom">
+                        <p>{n.message}</p>
+                    </div>
+                {/if}
             </div>
         {/each}
     </div>
@@ -77,9 +79,10 @@
         width: 320px;
 
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        height: fit-content;
         gap: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -108,29 +111,44 @@
             border: 1px solid var(--info);
         }
 
-        .left {
+        .top {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            width: 40px;
-            height: 100%;
-        }
+            justify-content: flex-start;
+            width: 100%;
+            line-height: 1.2;
+            height: fit-content;
+            padding: 5px 0;
 
-        .right {
-            flex: 1;
-            font-size: 1.2em;
-            line-height: 1.5;
+            i {
+                font-size: 200%;
+                height: 100%;
+                margin-right: 5px;
+                aspect-ratio: 1;
+                display: flex;
+                max-width: 30%;
+                align-items: center;
+                justify-content: center;
+            }
 
             h3 {
-                margin: 2px 0;
-                font-size: 1.2em;
+                margin: 0;
+                font-size: 1.5em;
                 font-weight: bold;
+                height: 100%;
+                word-wrap: break-word;
+                overflow: initial;
 
                 &:before {
                     content: none;
                 }
             }
+        }
+
+        .bottom {
+            flex: 1;
+            font-size: 1.2em;
+            line-height: 1.5;
 
             p {
                 margin: 0;
