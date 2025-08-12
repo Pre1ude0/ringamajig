@@ -1,10 +1,12 @@
 <script>
     import DarkToggle from "$lib/components/DarkToggle.svelte";
     import ReturnHome from "$lib/components/returnHome.svelte";
+    import Notifications from "$lib/components/notifications.svelte";
 </script>
 
 <ReturnHome />
 <DarkToggle />
+<Notifications />
 <slot />
 <div style="flex-grow: 1"></div>
 <div class="bar">

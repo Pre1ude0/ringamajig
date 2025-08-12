@@ -1,8 +1,10 @@
 <script lang="ts">
     import Tile from "$lib/components/tile.svelte";
     import prideFlags from "$lib/data/prideFlags.json";
-    import { compilePreview } from "$lib/utils/compilePreview";
-    import { addCopyButtons } from "$lib/utils/codeBlock";
+    import {
+        compileTilePreview,
+        applyPrettyPrint,
+    } from "$lib/utils/compilePreview";
     import { onMount } from "svelte";
     const form = $state({
         title: null,
@@ -36,19 +38,14 @@
     });
     const requiredFields = ["og:title", "og:description", "og:image", "og:url"];
 
-    let codePreviewContainer: HTMLElement | null = null;
+    let codePreviewContainer: HTMLElement | null = $state(null);
     onMount(() => {
         codePreviewContainer = document.getElementById("tile-code");
         form.themeColor = null;
     });
 
     $effect(() => {
-        if (!codePreviewContainer) return;
-
-        codePreviewContainer.innerText = compilePreview(tileData);
-        addCopyButtons(codePreviewContainer.parentElement!);
-        codePreviewContainer.classList.remove("prettyprinted");
-        window.PR!.prettyPrint();
+        applyPrettyPrint(codePreviewContainer, compileTilePreview(tileData));
     });
 </script>
 
@@ -150,9 +147,7 @@
                     <span>Required fields missing!</span>
                 </div>
             {/if}
-            <pre
-                class="compiled-code prettyprint lang-html"
-                id="tile-code"></pre>
+            <pre class="tile-code prettyprint lang-html" id="tile-code"></pre>
         </div>
     </div>
 </div>
@@ -200,7 +195,7 @@
         gap: 20px;
         width: 50%;
 
-        .compiled-code {
+        .tile-code {
             height: fit-content;
             min-height: 200px;
             width: 100% !important;

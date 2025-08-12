@@ -8,6 +8,7 @@
     import Iframe from "./iframe.svelte";
     import PrideFlags from "./prideFlags.svelte";
     import TilePreview from "./tilePreview.svelte";
+    import WidgetPreview from "./widgetPreview.svelte";
     import { addCopyButtons } from "$lib/utils/codeBlock";
     import { addAnchors, highlightActiveAnchor } from "$lib/utils/anchors";
 

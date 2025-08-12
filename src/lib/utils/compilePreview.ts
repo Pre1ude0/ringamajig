@@ -1,4 +1,6 @@
-export function compilePreview(tile: any) {
+import { addCopyButtons } from "$lib/utils/codeBlock";
+
+export function compileTilePreview(tile: any) {
     let preview: string = "";
 
     for (let i of Object.keys(tile.og)) {
@@ -20,4 +22,30 @@ export function compilePreview(tile: any) {
         preview = `<!-- Put this in the <head> of your html -->${preview}`;
     }
     return preview;
+}
+
+export function compileWidgetPreview(widget: any) {
+    let preview: string = "https://ring.pre1ude.dev/ring?";
+    for (let i of Object.keys(widget)) {
+        if (!widget[i] || widget[i] === "") continue;
+        if (i.endsWith("color")) {
+            widget[i] = widget[i].replace("#", "");
+        }
+        preview += `${i}=${widget[i]}&`;
+    }
+    preview = preview.replace(/&$/, ""); // Remove trailing '&'
+
+    return preview;
+}
+
+export function applyPrettyPrint(
+    codePreviewContainer: HTMLElement | null,
+    code: string,
+): void {
+    if (!codePreviewContainer) return;
+
+    codePreviewContainer.innerText = code;
+    addCopyButtons(codePreviewContainer.parentElement!);
+    codePreviewContainer.classList.remove("prettyprinted");
+    window.PR!.prettyPrint();
 }
