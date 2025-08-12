@@ -1,3 +1,9 @@
+# Version 1.6.2
+- Made a notification system for the webring in case there is a need
+- Fixed an issue where the site card builder wouldn't output any code
+
+---
+
 # Hotfix 1.6.1
 - Fixed some issues with the mobile view of the preview builder
 
