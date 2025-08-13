@@ -64,9 +64,6 @@
                 {/if}
 
                 {#if n.duration}
-                    <!-- The progress bar animation drives auto‑dismiss.
-					     Hover pauses animation (see CSS). When animation finishes,
-					     animationend fires and we remove the notification. -->
                     <div
                         class="duration-bar"
                         style={`--duration:${n.duration}ms`}
@@ -119,7 +116,6 @@
             background-color 0.3s,
             color 0.3s,
             border-color 0.3s;
-        overflow: hidden;
     }
 
     .notification.success {
@@ -202,7 +198,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(50%, -50%);
+        transform: translate(40%, -40%);
         background: none;
         border: inherit;
         border-radius: 50%;
@@ -214,9 +210,6 @@
         cursor: pointer;
         font-size: 10px;
         color: inherit;
-    }
-
-    .close:hover {
-        filter: brightness(1.2);
+        background-color: inherit;
     }
 </style>
