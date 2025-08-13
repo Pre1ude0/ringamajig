@@ -157,6 +157,10 @@
         margin: 0;
         font-size: 1.5em;
         font-weight: bold;
+        cursor: default;
+        &:before {
+            content: none;
+        }
     }
 
     .bottom {
