@@ -4,6 +4,6 @@
     "title": "Test",
     "message": "test",
     "type": "success",
-    "duration": ""
+    "duration": "10000"
   }
 ]
