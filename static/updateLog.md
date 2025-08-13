@@ -1,7 +1,13 @@
+# Version 1.6.4
+- Add timed notifications
+- Minor styling tweaks
+
+---
+
 # Version 1.6.3
-- Fixed the site tile builder outputting false names for meta variables ~~this is why testers exist but wtv~~
+- Fixed the site tile builder outputting wrong names for meta variables ~~this is why testers exist but wtv~~
 - Fixed some goofy sticky placement with the notifications on some pages
-- Fixed the notifications not showing up due to falty environment variables
+- Fixed the notifications not showing up due to faulty environment variables
 
 ---
 

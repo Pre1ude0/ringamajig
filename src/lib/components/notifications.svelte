@@ -1,14 +1,45 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onMount, tick } from "svelte";
     import { fly } from "svelte/transition";
-    let notifications: Array<any> = $state([]);
+
+    type Notification = {
+        id: number;
+        title: string;
+        message: string;
+        type: string;
+        duration?: number; // ms
+    };
+
+    let notifications: Notification[] = [];
 
     onMount(async () => {
         const res = await fetch("/api/notifications");
-        if (res.ok) {
-            notifications = await res.json();
-        }
+        if (!res.ok) return;
+        notifications = await res.json();
+
+        notifications
+            .filter((n) => n.duration)
+            .forEach((n) => {
+                setTimeout(() => {
+                    notifications = notifications.filter((x) => x.id !== n.id);
+                }, n.duration);
+            });
+
+        // Wait for DOM so bars exist before triggering animation
+        await tick();
+
+        requestAnimationFrame(() => {
+            const bars =
+                document.querySelectorAll<HTMLElement>(".duration-bar");
+            bars.forEach((bar) => {
+                bar.dataset.started = "true";
+            });
+        });
     });
+
+    function trackById(n: Notification) {
+        return n.id;
+    }
 </script>
 
 <div class="sticky-box-parent">
@@ -23,7 +54,11 @@
                 <button
                     aria-label="Close notification"
                     class="close"
-                    onclick={() => notifications.splice(i, 1)}
+                    onclick={() => {
+                        notifications = notifications.filter(
+                            (x) => x.id !== n.id,
+                        );
+                    }}
                 >
                     <i class="nf nf-fa-times"></i>
                 </button>
@@ -43,6 +78,12 @@
                     <div class="bottom">
                         <p>{n.message}</p>
                     </div>
+                {/if}
+                {#if n.duration}
+                    <div
+                        class="duration-bar"
+                        style={`--duration: ${n.duration}ms;`}
+                    ></div>
                 {/if}
             </div>
         {/each}
@@ -99,16 +140,27 @@
             background-color: var(--success-bg);
             color: var(--success);
             border: 1px solid var(--success);
+
+            .duration-bar {
+                background-color: var(--success);
+            }
         }
         &.warning {
             background-color: var(--error-bg);
             color: var(--error);
             border: 1px solid var(--error);
+
+            .duration-bar {
+                background-color: var(--error);
+            }
         }
         &.info {
             background-color: var(--info-bg);
             color: var(--info);
             border: 1px solid var(--info);
+            .duration-bar {
+                background-color: var(--info);
+            }
         }
 
         .top {
@@ -155,6 +207,20 @@
                 font-size: 1em;
                 text-indent: 0;
             }
+        }
+
+        .duration-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+
+            :global(&[data-started="true"]) {
+                width: 0;
+            }
+
+            transition: width var(--duration, 0) linear;
         }
 
         .close {
