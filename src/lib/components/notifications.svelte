@@ -54,12 +54,12 @@
                     {:else}
                         <i class="nf nf-fa-bell" aria-hidden="true"></i>
                     {/if}
-                    <h3>{n.title}</h3>
+                    <h3>{@html n.title}</h3>
                 </div>
 
                 {#if n.message}
                     <div class="bottom">
-                        <p>{n.message}</p>
+                        <p>{@html n.message}</p>
                     </div>
                 {/if}
 
@@ -157,7 +157,7 @@
         margin: 0;
         font-size: 1.5em;
         font-weight: bold;
-        cursor: default;
+        cursor: auto;
         &:before {
             content: none;
         }
