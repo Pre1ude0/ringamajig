@@ -32,10 +32,10 @@
     }
 
     onMount(() => {
-        if (window.self === window.top) {
-            goto("/");
-            return;
-        }
+        // if (window.self === window.top) {
+        //     goto("/");
+        //     return;
+        // }
 
         function isColor(strColor: string) {
             var s = new Option().style;
@@ -176,13 +176,18 @@
         align-items: center;
         justify-content: center;
         transition: none;
+
+        div {
+            height: fit-content !important;
+            min-height: auto !important;
+        }
     }
 
     div {
         display: flex;
         box-sizing: border-box;
-        height: 100%;
-        width: 100%;
+        height: fit-content;
+        width: fit-content;
         justify-content: center;
         align-items: flex-start;
         gap: 10px;

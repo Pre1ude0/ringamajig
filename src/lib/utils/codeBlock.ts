@@ -32,7 +32,7 @@ export function addCopyButtons(parent: HTMLElement) {
 
         button.setAttribute("aria-label", "Copy code to clipboard");
         button.addEventListener("click", () => {
-            console.log("Copying code to clipboard");
+            $inspect("Copying code to clipboard");
             navigator.clipboard
                 .writeText(pre.textContent || "")
                 .then(() => {

@@ -53,8 +53,6 @@
     }
 
     onMount(() => {
-        console.log(getCookie("darkMode"));
-
         const savedDarkMode =
             getCookie("darkMode") !== null
                 ? getCookie("darkMode")

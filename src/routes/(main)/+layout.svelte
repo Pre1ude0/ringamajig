@@ -4,6 +4,16 @@
     import Notifications from "$lib/components/notifications.svelte";
 </script>
 
+<svelte:head>
+    <style>
+        .site-body-display {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</svelte:head>
+
 <ReturnHome />
 <DarkToggle />
 <Notifications />
