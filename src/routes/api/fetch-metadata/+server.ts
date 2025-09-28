@@ -31,11 +31,13 @@ export const POST = async ({ request, fetch }) => {
         const $ = cheerio.load(html);
 
         const og: Record<string, string> = {};
-        $('meta[property^="og:"]').each((_, el) => {
+        $('meta[property^="og:"], meta[name^="og:"]').each((_, el) => {
             const property = $(el).attr("property");
+            const name = $(el).attr("name");
+            const key = property || name;
             const content = $(el).attr("content");
-            if (property && content) {
-                og[property] = content;
+            if (key && content) {
+                og[key] = content;
             }
         });
 
@@ -47,7 +49,20 @@ export const POST = async ({ request, fetch }) => {
         const meta: Record<string, string | null> = {};
 
         for (const name of metaVarsToGet) {
-            meta[name] = $(`meta[name="${name}"]`).attr("content") || null;
+            const metaTagByName = $(`meta[name="${name}"]`);
+            const metaTagByProperty = $(`meta[property="${name}"]`);
+
+            let content: string | null = null;
+
+            if (metaTagByName.length) {
+                content = metaTagByName.attr("content") || null;
+            } else if (metaTagByProperty.length) {
+                content = metaTagByProperty.attr("content") || null;
+            } else {
+                content = null;
+            }
+
+            meta[name] = content;
         }
 
         let favicon: string | null = null;

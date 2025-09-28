@@ -253,6 +253,7 @@
             justify-content: center;
             align-items: center;
             gap: 2px;
+            height: 100%;
 
             max-width: 30%;
             z-index: 1;
@@ -264,7 +265,7 @@
             }
 
             .thumbnail {
-                object-fit: cover;
+                object-fit: contain;
                 height: 100%;
                 width: auto;
                 max-width: 150px;
