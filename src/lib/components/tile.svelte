@@ -399,8 +399,9 @@
             .thumbnail {
                 width: 100% !important;
                 max-width: 100% !important;
-                height: 200px !important;
-                object-fit: cover;
+                max-height: 200px !important;
+                height: auto !important;
+                object-fit: cover !important;
             }
 
             .blankie {
