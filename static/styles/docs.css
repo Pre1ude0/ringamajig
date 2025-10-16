@@ -125,16 +125,16 @@ note {
         border: 1px var(--info) solid;
     }
 
-    /* &[data-type="critical"] {
-            .title {
-                background-color: var(--error);
-            }
+    &[data-type="critical"] {
+        .title {
+            background-color: var(--error);
+        }
 
-            position: relative;
-            border: 1px var(--error) solid;
+        position: relative;
+        border: 1px var(--error) solid;
 
-            border-radius: var(--border-radius);
-        } */
+        border-radius: var(--border-radius);
+    }
 
     transition: border-color 0.3s ease-in-out;
 }

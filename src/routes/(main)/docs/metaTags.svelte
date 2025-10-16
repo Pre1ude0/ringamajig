@@ -52,6 +52,17 @@
             target="_blank">meta tags</a
         >, which will be used to generate your site card on the list of pages
     </p>
+    <note data-type="warning">
+        <div class="title">
+            <i class="nf nf-fa-warning"></i> notice
+        </div>
+        <div class="content">
+            <p>
+                The <code>type</code> of metatags is no longer required as of v1.6.5!
+                If you're a new member, you don't have to worry about this!
+            </p>
+        </div>
+    </note>
     <h3>Meta tags handled by the ringamajig api:</h3>
     <table data-type="meta-tags">
         <thead>
@@ -132,6 +143,19 @@
             </tr>
         </tbody>
     </table>
+    <note data-type="critical">
+        <div class="title">
+            <i class="nf nf-fa-warning"></i> required tags
+        </div>
+        <div class="content">
+            <p>
+                The three required meta tags (marked with <span
+                    style="color: var(--required)">*</span
+                > ) are necessary for your site to render on the main page! Without
+                them your tile will be forever stuck in a loading state
+            </p>
+        </div>
+    </note>
     <note data-type="info">
         <div class="title">
             <i class="nf nf-fa-circle_info"></i> note
@@ -148,6 +172,7 @@
     </note>
     <h3>Example:</h3>
     <p>These are the meta tags of the ring-amajig webring</p>
+
     <pre class="prettyprint lang-html">
         &lt!-- Required tags --&gt
         &ltmeta property="og:title" content="Ring-amajig" /&gt
@@ -160,6 +185,7 @@
         &ltmeta name="theme-color" content="#ffffff" /&gt
         &ltmeta property="pride-flag" content="progress-pride" /&gt
     </pre>
+
     <note data-type="info">
         <div class="title">
             <i class="nf nf-fa-circle_info"></i> favicon / under the hood
