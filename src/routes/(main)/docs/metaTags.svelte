@@ -57,7 +57,6 @@
         <thead>
             <tr>
                 <th>Meta Tag</th>
-
                 <th>Description</th>
             </tr>
         </thead>
@@ -69,29 +68,20 @@
             </tr>
             <tr class="required">
                 <td><code>og:description</code></td>
-
                 <td
                     >A short description/fragment of the contents from your site</td
                 >
             </tr>
             <tr class="required">
                 <td><code>og:image</code></td>
-
-                <td
-                    >An <a
-                        href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls"
-                        target="_blank">absolute URL</a
-                    > to a thumbnail image</td
-                >
+                <td>A URL to a thumbnail image</td>
             </tr>
             <tr class="required">
                 <td><code>og:url</code></td>
-
-                <td>The absolute URL of your site</td>
+                <td>The URL of your site</td>
             </tr>
             <tr>
                 <td><code>og:site_name</code></td>
-
                 <td
                     >The name of your site (usually the same as the URL without
                     the <a
@@ -102,13 +92,8 @@
             </tr>
             <tr>
                 <td><code>site-button</code></td>
-
                 <td
-                    >An <a
-                        href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls"
-                        target="_blank">absolute URL</a
-                    >
-                    to your sites
+                    >A URL of your sites
                     <a href="https://indieweb.org/88x31" target="_blank"
                         >88x31 button</a
                     > image</td
@@ -123,7 +108,6 @@
                         ></code
                     ></td
                 >
-
                 <td
                     >The theme color of your site in <a
                         href="https://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form"
@@ -141,7 +125,8 @@
                 <td>
                     The pride flag that'll appear on the index number of your
                     tile. For a list of available flags, see the <a
-                        href="#pride-flags">full list</a
+                        href="#list-of-available-pride-flag-gradients"
+                        >full list</a
                     >
                 </td>
             </tr>
