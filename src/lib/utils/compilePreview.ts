@@ -8,9 +8,19 @@ export function compileTilePreview(tile: any) {
         preview += `\n<meta property="${i}" content="${tile.og[i]}">`;
     }
     for (let i of Object.keys(tile)) {
-        if (i === "og" || i === "favicon" || tile[i] === "") continue;
-        preview += `\n<meta name="${i}" content="${tile[i]}">`;
+        if (
+            i === "og" ||
+            i === "favicon" ||
+            i === "theme-color" ||
+            tile[i] === ""
+        )
+            continue;
+        preview += `\n<meta property="${i}" content="${tile[i]}">`;
     }
+    if (tile["theme-color"]) {
+        preview += `\n<meta name="theme-color" content="${tile["theme-color"]}">`;
+    }
+
     if (tile.favicon) {
         preview += `\n<link rel="icon" href="${tile.favicon}">`;
     }
