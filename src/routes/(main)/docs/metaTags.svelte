@@ -57,26 +57,26 @@
         <thead>
             <tr>
                 <th>Meta Tag</th>
-                <th>Type</th>
+
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             <tr class="required">
                 <td><code>og:title</code></td>
-                <td>property</td>
+
                 <td>The title of your site</td>
             </tr>
             <tr class="required">
                 <td><code>og:description</code></td>
-                <td>property</td>
+
                 <td
                     >A short description/fragment of the contents from your site</td
                 >
             </tr>
             <tr class="required">
                 <td><code>og:image</code></td>
-                <td>property</td>
+
                 <td
                     >An <a
                         href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls"
@@ -86,12 +86,12 @@
             </tr>
             <tr class="required">
                 <td><code>og:url</code></td>
-                <td>property</td>
+
                 <td>The absolute URL of your site</td>
             </tr>
             <tr>
                 <td><code>og:site_name</code></td>
-                <td>property</td>
+
                 <td
                     >The name of your site (usually the same as the URL without
                     the <a
@@ -102,7 +102,7 @@
             </tr>
             <tr>
                 <td><code>site-button</code></td>
-                <td>name</td>
+
                 <td
                     >An <a
                         href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls"
@@ -123,7 +123,7 @@
                         ></code
                     ></td
                 >
-                <td>name</td>
+
                 <td
                     >The theme color of your site in <a
                         href="https://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form"
@@ -137,7 +137,7 @@
             </tr>
             <tr class="optional">
                 <td><code>pride-flag</code></td>
-                <td>name</td>
+
                 <td>
                     The pride flag that'll appear on the index number of your
                     tile. For a list of available flags, see the <a
