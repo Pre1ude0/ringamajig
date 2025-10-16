@@ -1,3 +1,13 @@
+
+# Version 1.6.5
+This was a bit of a big update but I'll mark it as a minor release as its all bug fixes/quality of life updates
+
+- Make meta tag defining more consistent by merging the `property` and `name` fields for meta tags
+- Add support for relative paths to assets like images and site buttons
+- Contain site banners instead of fitting them, allowing wider banners to show up properly
+
+--
+
 # Version 1.6.4
 - Add timed notifications
 - Minor styling tweaks
