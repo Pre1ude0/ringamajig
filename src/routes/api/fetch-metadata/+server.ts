@@ -76,6 +76,21 @@ export const POST = async ({ request, fetch }) => {
             }
         }
 
+        if (
+            meta["site-button"] &&
+            !/^(https?:)?\/\//.test(meta["site-button"])
+        ) {
+            const baseUrl = url.replace(/\/+$/, "");
+            meta["site-button"] =
+                `${baseUrl}${meta["site-button"]!.startsWith("/") ? "" : "/"}${meta["site-button"]}`;
+        }
+
+        if (og["og:image"] && !/^(https?:)?\/\//.test(og["og:image"])) {
+            const baseUrl = url.replace(/\/+$/, "");
+            og["og:image"] =
+                `${baseUrl}${og["og:image"].startsWith("/") ? "" : "/"}${og["og:image"]}`;
+        }
+
         if (!favicon) {
             const strippedUrl = url.replace(/\/+$/, "");
             let staticIcon = await fetch(`${strippedUrl}/favicon.ico`);
@@ -98,6 +113,18 @@ export const POST = async ({ request, fetch }) => {
                     },
                     { status: 406 },
                 );
+            }
+            if (field === "og:image") {
+                try {
+                    new URL(og[field]);
+                } catch {
+                    return json(
+                        {
+                            error: `Invalid URL in metadata: ${field}`,
+                        },
+                        { status: 406 },
+                    );
+                }
             }
         }
 
