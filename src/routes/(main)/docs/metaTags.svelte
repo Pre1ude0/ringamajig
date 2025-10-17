@@ -149,7 +149,7 @@
         </div>
         <div class="content">
             <p>
-                The three required meta tags (marked with <span
+                The required meta tags (marked with <span
                     style="color: var(--required)">*</span
                 > ) are necessary for your site to render on the main page! Without
                 them your tile will be forever stuck in a loading state
