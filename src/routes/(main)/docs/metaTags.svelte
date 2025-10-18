@@ -54,7 +54,7 @@
     </p>
     <note data-type="warning">
         <div class="title">
-            <i class="nf nf-fa-warning"></i> notice
+            <i class="nf nf-fa-circle_exclamation"></i> notice
         </div>
         <div class="content">
             <p>
