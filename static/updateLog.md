@@ -33,7 +33,7 @@ This was a bit of a big update but I'll mark it as a minor release as its all bu
 ---
 
 # Version 1.6
-- Added a tile [preview/builder tool](/docs#tile-preview-builder) to the docs page
+- Added a tile [preview/builder tool](/docs#meta-tag-generator-tile-preview) to the docs page
 - Added heading anchors to the docs page
 
 ---

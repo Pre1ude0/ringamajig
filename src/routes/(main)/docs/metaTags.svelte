@@ -52,6 +52,11 @@
             target="_blank">meta tags</a
         >, which will be used to generate your site card on the list of pages
     </p>
+    <p>
+        If you're just here for the html, you can head to the <a
+            href="#meta-tag-generator-tile-preview">meta tag generator</a
+        >
+    </p>
     <note data-type="warning">
         <div class="title">
             <i class="nf nf-fa-circle_exclamation"></i> notice

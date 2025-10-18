@@ -50,7 +50,7 @@
 </script>
 
 <div class="container">
-    <h3>Tile preview/builder</h3>
+    <h3>Meta tag generator / Tile preview</h3>
     <div class="tile-preview">
         <form class="left">
             <label for="title" class="required">Title:</label>
