@@ -32,10 +32,11 @@
             <p>
                 iframe not showing up even though you've set <code>url</code>
                 like shown?
-                <a href="/1.png" target="_blank">Thats intended, not a bug</a> -
-                if you're not verified/approved yet, the iframe won't show any content,
-                eliminating that awkward phase of having a widget on your site that
-                doesn't work!
+                <a href="/img/1.png" target="_blank"
+                    >Thats intended, not a bug</a
+                > - if you're not verified/approved yet, the iframe won't show any
+                content, eliminating that awkward phase of having a widget on your
+                site that doesn't work!
             </p>
             <p>
                 Still want to customize your widget? No problem! Just add <code
