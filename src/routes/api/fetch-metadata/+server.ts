@@ -130,9 +130,9 @@ export const POST = async ({ request, fetch }) => {
 
         return json({
             og,
-            themeColor: meta["theme-color"],
-            prideFlag: meta["pride-flag"],
-            siteButton: meta["site-button"],
+            "theme-color": meta["theme-color"],
+            "pride-flag": meta["pride-flag"],
+            "site-button": meta["site-button"],
             favicon,
         });
     } catch (err) {

@@ -5,6 +5,7 @@
 
     let { index, pageName, pageData } = $props();
     let page: any = $derived(pageData || {});
+    $inspect(pageData);
     let delay: number = $derived(Number(index) ? index * 100 : 0);
     $inspect(page);
 
@@ -24,7 +25,7 @@
 <div
     class="tile {!page || !page.og ? 'loading' : ''} "
     in:fly={{ y: 20, duration: 300, delay }}
-    style="--index: '{index}'; --pride-flag: var(--{page.prideFlag});"
+    style="--index: '{index}'; --pride-flag: var(--{page['pride-flag']});"
 >
     {#if !page || !page.og}
         <div class="left">
@@ -41,8 +42,8 @@
         <div
             class="theme-color"
             style="
-                background-color: {page.themeColor || 'transparent'};
-                box-shadow: 0 0 7px {page.themeColor || 'transparent'};
+                background-color: {page['theme-color'] || 'transparent'};
+                box-shadow: 0 0 7px {page['theme-color'] || 'transparent'};
             "
         ></div>
         <div class="left" in:blur={{ duration: 500 }}>
@@ -92,13 +93,13 @@
                     class="thumbnail"
                 />
             {/if}
-            {#if page.siteButton}
+            {#if page["site-button"]}
                 <a
                     href={page.og["og:url"] ? page.og["og:url"] : null}
                     target="_blank"
                 >
                     <img
-                        src={page.siteButton}
+                        src={page["site-button"]}
                         class="blankie"
                         alt="Site 88x31 button"
                     />
