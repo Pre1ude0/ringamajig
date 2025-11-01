@@ -32,10 +32,10 @@
     }
 
     onMount(() => {
-        if (window.self === window.top) {
-            goto("/");
-            return;
-        }
+        // if (window.self === window.top) {
+        //     goto("/");
+        //     return;
+        // }
 
         function isColor(strColor: string) {
             var s = new Option().style;
@@ -167,8 +167,8 @@
 
 <style>
     :global(body) {
-        height: 100% !important;
-        width: 100% !important;
+        height: 100vh !important;
+        width: 100vw !important;
         margin: 0 !important;
         padding: 0 !important;
 
