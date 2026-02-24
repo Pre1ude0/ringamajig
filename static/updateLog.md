@@ -1,4 +1,14 @@
 
+# Version 1.6.6
+Due to [PartyPiglin](https://soursoft.neocities.org/) requesting to join my webring I found a flaw in my current system that checks if the webring widget is present on the site: their home/page was on a different path than the page where the widget was located, but their setup was valid (clearly indicated, one click away), so heres a fix for that!
+
+- Seperate home and gateway pages in the page list
+- Only check validity of gateway page 
+
+I'm planning to implement some extra checks for home pages (check if theres at least a link pointing to the gateway page) within the next couple updates to adjust for this change and effectively check for dead/flaky pages
+
+---
+
 # Version 1.6.5
 This was a bit of a big update but I'll mark it as a minor release as its all bug fixes/quality of life updates
 
