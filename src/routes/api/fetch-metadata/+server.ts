@@ -1,6 +1,7 @@
 import { json } from "@sveltejs/kit";
-import { checkPageValidity } from "$lib/utils/checkPageValidity";
+import checkPageValidity from "$lib/utils/checkPageValidity";
 import * as cheerio from "cheerio";
+import splitUrl from "$lib/utils/splitUrl";
 
 export const POST = async ({ request, fetch }) => {
     try {
@@ -10,7 +11,8 @@ export const POST = async ({ request, fetch }) => {
             return json({ error: "Invalid or missing URL." }, { status: 400 });
         }
 
-        if (!(await checkPageValidity(url, fetch))) {
+        const [home, gateway] = splitUrl(url);
+        if (!(await checkPageValidity(gateway, fetch))) {
             return json(
                 {
                     error: `Page invalid: ${url}`,
@@ -19,7 +21,7 @@ export const POST = async ({ request, fetch }) => {
             );
         }
 
-        const res = await fetch(url);
+        const res = await fetch(home);
         if (!res.ok) {
             return json(
                 { error: `Failed to fetch page: ${res.statusText}` },
@@ -42,7 +44,7 @@ export const POST = async ({ request, fetch }) => {
         });
 
         if (!og["og:site_name"]) {
-            og["og:site_name"] = url.replace(/^https?:\/\//, "");
+            og["og:site_name"] = home.replace(/^https?:\/\//, "");
         }
 
         const metaVarsToGet = ["theme-color", "pride-flag", "site-button"];
@@ -67,11 +69,11 @@ export const POST = async ({ request, fetch }) => {
 
         let favicon: string | null = null;
         const faviconHref = $("link[rel='icon']").attr("href");
+        const baseUrl = home.replace(/\/+$/, "");
         if (faviconHref) {
             if (/^(https?:)?\/\//.test(faviconHref)) {
                 favicon = faviconHref;
             } else {
-                const baseUrl = url.replace(/\/+$/, "");
                 favicon = `${baseUrl}${faviconHref.startsWith("/") ? "" : "/"}${faviconHref}`;
             }
         }
@@ -80,19 +82,17 @@ export const POST = async ({ request, fetch }) => {
             meta["site-button"] &&
             !/^(https?:)?\/\//.test(meta["site-button"])
         ) {
-            const baseUrl = url.replace(/\/+$/, "");
             meta["site-button"] =
                 `${baseUrl}${meta["site-button"]!.startsWith("/") ? "" : "/"}${meta["site-button"]}`;
         }
 
         if (og["og:image"] && !/^(https?:)?\/\//.test(og["og:image"])) {
-            const baseUrl = url.replace(/\/+$/, "");
             og["og:image"] =
                 `${baseUrl}${og["og:image"].startsWith("/") ? "" : "/"}${og["og:image"]}`;
         }
 
         if (!favicon) {
-            const strippedUrl = url.replace(/\/+$/, "");
+            const strippedUrl = home.replace(/\/+$/, "");
             let staticIcon = await fetch(`${strippedUrl}/favicon.ico`);
             if (staticIcon.ok) {
                 favicon = `${strippedUrl}/favicon.ico`;

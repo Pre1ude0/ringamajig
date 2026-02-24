@@ -1,6 +1,6 @@
 import { pullCheerio, pullPuppeteer } from "./pullPageContent";
 
-export async function checkPageValidity(
+async function checkPageValidity(
     url: string,
     fetch: typeof globalThis.fetch,
 ): Promise<boolean> {
@@ -40,3 +40,5 @@ export async function checkPageValidity(
         return false;
     }
 }
+
+export default checkPageValidity;

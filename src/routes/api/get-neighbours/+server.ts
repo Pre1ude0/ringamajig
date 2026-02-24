@@ -1,5 +1,6 @@
-import { checkPageValidity } from "$lib/utils/checkPageValidity.js";
+import checkPageValidity from "$lib/utils/checkPageValidity.js";
 import { json } from "@sveltejs/kit";
+import splitUrl from "$lib/utils/splitUrl.js";
 
 async function getNeighours(
     url: string,
@@ -25,8 +26,10 @@ async function getNeighours(
         for (let i = pageIndex - 1; ; i--) {
             if (i < 0) i = pages.length - 1; // Wrap around to the end
 
-            if (pages[i] && (await checkPageValidity(pages[i], fetch))) {
-                previous = pages[i];
+            const [home, gateway] = splitUrl(pages[i]);
+
+            if (pages[i] && (await checkPageValidity(gateway, fetch))) {
+                previous = home;
                 break;
             }
         }
@@ -36,8 +39,10 @@ async function getNeighours(
         for (let i = pageIndex + 1; ; i++) {
             if (i >= pages.length) i = 0; // Wrap around to the start
 
-            if (pages[i] && (await checkPageValidity(pages[i], fetch))) {
-                next = pages[i];
+            const [home, gateway] = splitUrl(pages[i]);
+
+            if (pages[i] && (await checkPageValidity(gateway, fetch))) {
+                next = home;
                 break;
             }
         }
