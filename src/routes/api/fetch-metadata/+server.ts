@@ -12,7 +12,7 @@ export const POST = async ({ request, fetch }) => {
         }
 
         const [home, gateway] = splitUrl(url);
-        if (!(await checkPageValidity(gateway, fetch))) {
+        if (!(await checkPageValidity(url, fetch))) {
             return json(
                 {
                     error: `Page invalid: ${url}`,

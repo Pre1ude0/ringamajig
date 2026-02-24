@@ -1,4 +1,5 @@
 import { pullCheerio, pullPuppeteer } from "./pullPageContent";
+import splitUrl from "./splitUrl";
 
 async function checkPageValidity(
     url: string,
@@ -10,10 +11,12 @@ async function checkPageValidity(
             return false;
         }
 
-        let sources: Array<string> | null = await pullCheerio(url, fetch);
+        const [home, gateway] = splitUrl(url);
+
+        let sources: Array<string> | null = await pullCheerio(gateway, fetch);
         if (sources === null) {
             console.warn("Cheerio failed, trying Puppeteer for: " + url);
-            sources = await pullPuppeteer(url);
+            sources = await pullPuppeteer(gateway);
             if (sources === null || sources.length === 0) {
                 console.warn("No valid sources found for:", url);
                 return false;
@@ -32,7 +35,7 @@ async function checkPageValidity(
             if (!params.has("url") || params.has("test")) continue;
 
             let pageUrl = params.get("url")?.replace(/\/$/, "");
-            if (pageUrl === url) return true;
+            if (pageUrl === home || pageUrl === gateway) return true;
         }
 
         return false;

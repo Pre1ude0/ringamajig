@@ -66,7 +66,7 @@
                     <img src={page.favicon} alt="Site favicon" />
                 {/if}
                 {#if page.og["og:url"]}
-                    <a href={splitUrl(page.og["og:url"])[1]} target="_blank">
+                    <a href={page.og["og:url"]} target="_blank">
                         {#if page.og["og:site_name"]}
                             {page.og["og:site_name"]}
                         {:else}
@@ -96,9 +96,7 @@
             {/if}
             {#if page["site-button"]}
                 <a
-                    href={page.og["og:url"]
-                        ? splitUrl(page.og["og:url"])[1]
-                        : null}
+                    href={page.og["og:url"] ? page.og["og:url"] : null}
                     target="_blank"
                 >
                     <img

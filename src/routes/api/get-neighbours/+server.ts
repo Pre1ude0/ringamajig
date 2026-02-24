@@ -28,7 +28,7 @@ async function getNeighours(
 
             const [home, gateway] = splitUrl(pages[i]);
 
-            if (pages[i] && (await checkPageValidity(gateway, fetch))) {
+            if (pages[i] && (await checkPageValidity(pages[i], fetch))) {
                 previous = home;
                 break;
             }
@@ -41,7 +41,7 @@ async function getNeighours(
 
             const [home, gateway] = splitUrl(pages[i]);
 
-            if (pages[i] && (await checkPageValidity(gateway, fetch))) {
+            if (pages[i] && (await checkPageValidity(pages[i], fetch))) {
                 next = home;
                 break;
             }
