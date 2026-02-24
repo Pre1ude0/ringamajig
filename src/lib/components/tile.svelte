@@ -66,7 +66,14 @@
                     <img src={page.favicon} alt="Site favicon" />
                 {/if}
                 {#if page.og["og:url"]}
-                    <a href={page.og["og:url"]} target="_blank">
+                    <a
+                        href={page.og["og:url"]}
+                        target="_blank"
+                        title={trunicate(
+                            page.og["og:site_name"] || page.og["og:url"],
+                            50,
+                        )}
+                    >
                         {#if page.og["og:site_name"]}
                             {page.og["og:site_name"]}
                         {:else}
@@ -190,6 +197,7 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 line-clamp: 1;
+                -webkit-line-clamp: 1;
                 overflow: hidden;
 
                 transition: color 0.3s ease-in-out;
@@ -223,8 +231,17 @@
                 align-items: center;
                 justify-content: flex-start;
                 gap: 5px;
-                line-clamp: 1;
-                text-overflow: ellipsis;
+                width: 100%;
+
+                a {
+                    width: 100%;
+                    white-space: nowrap;
+                    line-clamp: 1;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
 
                 img {
                     aspect-ratio: 1;
