@@ -234,7 +234,7 @@
                 width: 100%;
 
                 a {
-                    width: 100%;
+                    max-width: 100%;
                     white-space: nowrap;
                     line-clamp: 1;
                     -webkit-line-clamp: 1;
