@@ -2,7 +2,6 @@
     import { getOpenGraphData, trunicate } from "$lib/utils/pages";
     import { onMount } from "svelte";
     import { fly, blur } from "svelte/transition";
-    import splitUrl from "$lib/utils/splitUrl";
 
     let { index, pageName, pageData } = $props();
     let page: any = $derived(pageData || {});

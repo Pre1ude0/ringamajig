@@ -14,12 +14,22 @@ async function getNeighours(
             .map((line) => line.trim())
             .filter((line) => line);
 
-        if (!pages.includes(url)) {
+        const [splitHomes, splitGateways] = pages.reduce(
+            ([homes, gateways], page) => {
+                const [home, gateway] = splitUrl(page);
+                homes.push(home);
+                gateways.push(gateway);
+                return [homes, gateways];
+            },
+            [[], []] as [string[], string[]],
+        );
+
+        if (!splitHomes.includes(url) && !splitGateways.includes(url)) {
             console.error("URL not found in pages.txt");
             return [];
         }
 
-        let pageIndex = pages.indexOf(url);
+        let pageIndex = splitHomes.indexOf(url) || splitGateways.indexOf(url);
 
         // Find previous valid neighbour
         let previous: string;
