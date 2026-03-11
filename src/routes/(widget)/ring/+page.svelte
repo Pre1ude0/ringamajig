@@ -31,17 +31,38 @@
         document.body.style.backgroundColor = color;
     }
 
+    function scaleWidgetToFit() {
+        const widget = document.querySelector(
+            "body > div",
+        ) as HTMLElement | null;
+        if (!widget) return;
+
+        widget.style.transform = "none";
+        widget.style.transformOrigin = "center center";
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const rect = widget.getBoundingClientRect();
+
+        const scaleX = viewportWidth / rect.width;
+        const scaleY = viewportHeight / rect.height;
+        const scale = Math.min(scaleX, scaleY, 1);
+
+        widget.style.transform = `scale(${scale})`;
+    }
+
+    function isColor(strColor: string) {
+        var s = new Option().style;
+        s.color = strColor;
+        return s.color == strColor;
+    }
+
     onMount(() => {
         // if (window.self === window.top) {
         //     goto("/");
         //     return;
         // }
-
-        function isColor(strColor: string) {
-            var s = new Option().style;
-            s.color = strColor;
-            return s.color == strColor;
-        }
 
         currentPageUrl =
             new URL(window.location.href).searchParams.get("url") || "";
@@ -106,12 +127,22 @@
                     previous = data.previous;
                     next = data.next;
                     showPage = true;
+                    runScaleWidgetToFit();
                 })
                 .catch((error) => {
                     console.error("Error fetching neighbours:", error);
                     showPage = false;
                 });
         }
+
+        const runScaleWidgetToFit = () => {
+            requestAnimationFrame(() => {
+                scaleWidgetToFit();
+            });
+        };
+
+        runScaleWidgetToFit();
+        window.addEventListener("resize", runScaleWidgetToFit);
     });
 </script>
 
@@ -186,10 +217,10 @@
     div {
         display: flex;
         box-sizing: border-box;
-        height: fit-content;
-        width: fit-content;
+        min-height: 80px;
+        max-height: 100px;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         gap: 10px;
         padding: 10px;
 
@@ -228,8 +259,8 @@
 
         color: var(--cust-fg, var(--fg));
 
-        height: fit-content;
-        line-height: 55px;
+        height: 40px;
+        line-height: 1;
         transition: transform 0.3s var(--overshoot);
 
         &:hover {
