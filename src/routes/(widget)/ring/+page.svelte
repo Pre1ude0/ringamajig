@@ -171,6 +171,7 @@
         target="_top"
         data-watermark={testMode}
         in:blur={{ duration: custVal.animdur }}
+        style:height="fit-content"
     >
         <Logo
             --width="100px"
@@ -207,18 +208,12 @@
         align-items: center;
         justify-content: center;
         transition: none;
-
-        div {
-            height: fit-content !important;
-            min-height: auto !important;
-        }
     }
 
     div {
         display: flex;
         box-sizing: border-box;
-        min-height: 80px;
-        max-height: 100px;
+        height: 120px;
         justify-content: center;
         align-items: center;
         gap: 10px;
@@ -259,8 +254,8 @@
 
         color: var(--cust-fg, var(--fg));
 
-        height: 40px;
-        line-height: 1;
+        height: 20px;
+        line-height: 0.1;
         transition: transform 0.3s var(--overshoot);
 
         &:hover {
